@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { MbscPage } from '@mobiscroll/vue'
 import { RouterLink } from 'vue-router'
 import { demos } from '../demos'

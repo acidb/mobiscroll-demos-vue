@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import '@mobiscroll/vue/dist/css/mobiscroll.min.css'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { demoTitleMap } from './demos'
