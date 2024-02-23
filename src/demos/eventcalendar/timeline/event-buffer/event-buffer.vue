@@ -1,13 +1,12 @@
 <script setup>
 import { MbscEventcalendar, setOptions /* localeImport */ } from '@mobiscroll/vue'
-import { ref } from 'vue'
 
 setOptions({
   // locale,
   // theme
 })
 
-const myEvents = ref([
+const myEvents = [
   {
     bufferAfter: 30,
     start: 'dyndatetime(y,m,d,6)',
@@ -26,10 +25,10 @@ const myEvents = ref([
   {
     bufferAfter: 120,
     bufferBefore: 30,
-    start: 'dyndatetime(y,m,d+7,13)',
-    end: 'dyndatetime(y,m,d+8,21)',
-    title: '',
-    resource: 1
+    start: 'dyndatetime(y,m,d,13)',
+    end: 'dyndatetime(y,m,d,21)',
+    title: 'Mastering CSS class',
+    resource: 2
   },
   {
     bufferAfter: 10,
@@ -37,59 +36,34 @@ const myEvents = ref([
     start: 'dyndatetime(y,m,d,8)',
     end: 'dyndatetime(y,m,d,10)',
     title: 'Product team mtg.',
-    resource: 5
-  },
-  {
-    bufferAfter: 10,
-    bufferBefore: 10,
-    start: 'dyndatetime(y,m,d+1,7)',
-    end: 'dyndatetime(y,m,d+1,8)',
-    title: 'Green box to post office',
-    resource: 5
-  },
-  {
-    bufferAfter: 10,
-    bufferBefore: 10,
-    start: 'dyndatetime(y,m,d-1,8,30)',
-    end: 'dyndatetime(y,m,d-1,10)',
-    title: 'Quick mtg. with Martin',
     resource: 2
   },
   {
+    bufferAfter: 20,
+    bufferBefore: 30,
+    start: 'dyndatetime(y,m,d,16,30)',
+    end: 'dyndatetime(y,m,d,19, 30)',
+    title: 'Cinema afternoon',
+    resource: 3
+  },
+  {
     bufferAfter: 10,
+    bufferBefore: 10,
+    start: 'dyndatetime(y,m,d,8,30)',
+    end: 'dyndatetime(y,m,d,10)',
+    title: 'Quick mtg. with Martin',
+    resource: 3
+  },
+  {
     bufferBefore: 45,
     start: 'dyndatetime(y,m,d,9,30)',
     end: 'dyndatetime(y,m,d,12)',
     title: 'Product team mtg.',
     resource: 4
-  },
-  {
-    bufferAfter: 35,
-    bufferBefore: 60,
-    start: 'dyndatetime(y,m,d,11)',
-    end: 'dyndatetime(y,m,d,12,30)',
-    title: 'Stakeholder mtg.',
-    resource: 2
-  },
-  {
-    bufferAfter: 60,
-    bufferBefore: 35,
-    start: 'dyndatetime(y,m,d,13,30)',
-    end: 'dyndatetime(y,m,d,14,30)',
-    title: "Lunch @ Butcher's",
-    resource: 2
-  },
-  {
-    bufferAfter: 15,
-    bufferBefore: 30,
-    start: 'dyndatetime(y,m,8,15)',
-    end: 'dyndatetime(y,m,8,17)',
-    title: 'General orientation',
-    resource: 4
   }
-])
+]
 
-const myResources = ref([
+const myResources = [
   {
     id: 1,
     name: 'Resource A',
@@ -115,7 +89,7 @@ const myResources = ref([
     name: 'Resource E',
     color: '#ff4600'
   }
-])
+]
 
 const myView = {
   timeline: { type: 'day' }
