@@ -17,6 +17,11 @@ const mySelectedDate = ref(new Date())
 const dayView = {
   timeline: { type: 'day' }
 }
+const myResoruces = [
+  { id: 1, name: 'Resource 1', color: 'red' },
+  { id: 2, name: 'Resource 2', color: 'orange' },
+  { id: 3, name: 'Resource 3', color: 'blue' }
+]
 
 function handleSelectedDateChange(args) {
   mySelectedDate.value = args.date
@@ -28,7 +33,7 @@ function handleDateChange(args) {
 
 onMounted(() => {
   getJson(
-    'https://trial.mobiscroll.com/events/?vers=5',
+    'https://trial.mobiscroll.com/filter-resource-events/ ',
     (events) => {
       myEvents.value = events
     },
@@ -46,6 +51,7 @@ onMounted(() => {
       <MbscEventcalendar
         :view="dayView"
         :data="myEvents"
+        :resources="myResoruces"
         :selectedDate="mySelectedDate"
         @selected-date-change="handleSelectedDateChange"
       />
