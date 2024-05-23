@@ -2,6 +2,7 @@
 import {
   MbscButton,
   MbscDatepicker,
+  MbscDropdown,
   MbscEventcalendar,
   MbscInput,
   MbscPopup,
@@ -27,6 +28,7 @@ const myEvents = ref([
     title: "Lunch @ Butcher's",
     description: '',
     allDay: false,
+    bufferBefore: 15,
     free: true,
     resource: 3
   },
@@ -34,9 +36,10 @@ const myEvents = ref([
     id: 2,
     start: 'dyndatetime(y,m,d,14)',
     end: 'dyndatetime(y,m,d,16)',
-    title: 'General orientation',
+    title: 'Conference',
     description: '',
     allDay: false,
+    bufferBefore: 30,
     free: false,
     resource: 5
   },
@@ -44,9 +47,10 @@ const myEvents = ref([
     id: 3,
     start: 'dyndatetime(y,m,d,18)',
     end: 'dyndatetime(y,m,d,22)',
-    title: 'Dexter BD',
+    title: 'Site Visit',
     description: '',
     allDay: false,
+    bufferBefore: 60,
     free: true,
     resource: 4
   },
@@ -112,6 +116,7 @@ const popupEventTitle = ref('')
 const popupEventDescription = ref('')
 const popupEventDates = ref([])
 const popupEventAllDay = ref(false)
+const popupTravelTime = ref(0)
 const popupEventStatus = ref('free')
 const popupAnchor = ref(null)
 const popupButtons = ref([])
@@ -190,6 +195,7 @@ function fillPopup(event) {
   popupEventTitle.value = event.title
   popupEventDescription.value = event.description
   popupEventAllDay.value = event.allDay || false
+  popupTravelTime.value = event.bufferBefore || 0
   popupEventDates.value = [event.start, event.end]
   popupEventStatus.value = event.status || 'busy'
   popupEventColor.value = event.color || ''
@@ -214,10 +220,12 @@ function createAddPopup(event, target) {
           title: popupEventTitle.value,
           description: popupEventDescription.value,
           allDay: popupEventAllDay.value,
+          bufferBefore: popupTravelTime.value,
           status: popupEventStatus.value,
           start: popupEventDates.value[0],
           end: popupEventDates.value[1],
-          color: popupEventColor.value
+          color: popupEventColor.value,
+          resource: event.resource
         }
         myEvents.value = [...myEvents.value, newEvent]
         mySelectedDate.value = popupEventDates.value[0]
@@ -252,6 +260,7 @@ function createEditPopup(event, target) {
         updatedEvent.title = popupEventTitle.value
         updatedEvent.description = popupEventDescription.value
         updatedEvent.allDay = popupEventAllDay.value
+        updatedEvent.bufferBefore = popupTravelTime.value
         updatedEvent.start = popupEventDates.value[0]
         updatedEvent.end = popupEventDates.value[1]
         updatedEvent.color = popupEventColor.value
@@ -359,6 +368,17 @@ function handleSnackbarClose() {
 
       <MbscInput ref="startInput" label="Starts" />
       <MbscInput ref="endInput" label="Ends" />
+      <template v-if="!popupEventAllDay">
+        <MbscDropdown v-model="popupTravelTime" label="Travel time">
+          <option value="0">None</option>
+          <option value="5">5 minutes</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="90">1.5 hours</option>
+          <option value="120">2 hours</option>
+        </MbscDropdown>
+      </template>
       <MbscDatepicker
         v-model="popupEventDates"
         select="range"
