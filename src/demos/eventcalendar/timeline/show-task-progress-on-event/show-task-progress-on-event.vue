@@ -141,22 +141,12 @@ const myView = {
     eventList: true
   }
 }
-const isEdit = ref(false)
-const isDraggingProgress = ref(false)
 
-const mySelectedDate = ref()
-let addedEvent = null
-let editedEvent = null
+let isEdit = false
+let isDraggingProgress = false
 
-// Popup
-const myResponsive = {
-  medium: {
-    display: 'anchored',
-    width: 400,
-    fullScreen: false,
-    touchUi: false
-  }
-}
+const isPopupOpen = ref(false)
+
 const popupEventTitle = ref('')
 const popupEventDates = ref([])
 const popupEventProgress = ref(0)
@@ -165,20 +155,25 @@ const popupEventResource = ref('')
 const popupAnchor = ref(null)
 const popupButtons = ref([])
 const popupHeaderText = ref('')
-const isPopupOpen = ref(false)
 
-// Datepicker
-const startInput = ref(null)
-const endInput = ref(null)
+const popupResponsive = {
+  medium: {
+    display: 'anchored',
+    width: 400,
+    fullScreen: false,
+    touchUi: false
+  }
+}
 
-const datePickerControls = ['date']
+const datePickerStartInput = ref(null)
+const datePickerEndInput = ref(null)
+
 const datePickerResponsive = {
   medium: {
     touchUi: false
   }
 }
 
-// Fills the popup with the event's data
 function loadPopupForm(event) {
   popupEventTitle.value = event.title
   popupEventDates.value = [event.start, event.end]
@@ -187,12 +182,7 @@ function loadPopupForm(event) {
 }
 
 function createAddPopup(event, target) {
-  // Hide delete button inside add popup
-  isEdit.value = false
-
-  addedEvent = event
-
-  // Set popup header text and buttons
+  isEdit = false
   popupHeaderText.value = 'New event'
   popupButtons.value = [
     'cancel',
@@ -201,51 +191,43 @@ function createAddPopup(event, target) {
       keyCode: 'enter',
       handler: () => {
         const newEvent = {
-          id: addedEvent.id,
+          id: event.id,
           title: popupEventTitle.value,
           start: popupEventDates.value[0],
           end: popupEventDates.value[1],
           resource: popupEventResource.value,
           progress: popupEventProgress.value
         }
+        // Add the new event to the list
         myEvents.value = [...myEvents.value, newEvent]
-        mySelectedDate.value = popupEventDates.value[0]
         isPopupOpen.value = false
       },
       cssClass: 'mbsc-popup-button-primary'
     }
   ]
-  popupAnchor.value = target
-
   loadPopupForm(event)
+  popupAnchor.value = target
   isPopupOpen.value = true
 }
 
 function createEditPopup(event, target) {
-  // Show delete button inside edit popup
-  isEdit.value = true
-
-  editedEvent = event
-  addedEvent = null
-
+  isEdit = true
   popupHeaderText.value = 'Edit event'
-
-  // Set popup header text and buttons
   popupButtons.value = [
     'cancel',
     {
       text: 'Save',
       keyCode: 'enter',
       handler: () => {
-        const updatedEvent = editedEvent
+        const updatedEvent = { ...event }
         updatedEvent.title = popupEventTitle.value
         updatedEvent.start = popupEventDates.value[0]
         updatedEvent.end = popupEventDates.value[1]
         updatedEvent.resource = popupEventResource.value
         updatedEvent.progress = popupEventProgress.value
-        // Update event
-        let newEventList = [...myEvents.value]
-        const index = newEventList.findIndex((x) => x.id === updatedEvent.id)
+        // Update the event in the list
+        const newEventList = [...myEvents.value]
+        const index = newEventList.findIndex((e) => e.id === updatedEvent.id)
         newEventList[index] = updatedEvent
         myEvents.value = newEventList
         isPopupOpen.value = false
@@ -253,28 +235,30 @@ function createEditPopup(event, target) {
       cssClass: 'mbsc-popup-button-primary'
     }
   ]
-  popupAnchor.value = target
   loadPopupForm(event)
+  popupAnchor.value = target
   isPopupOpen.value = true
-}
-
-function handleEventClick(args) {
-  if (isDraggingProgress.value) return
-  createEditPopup(args.event, args.domEvent.currentTarget)
 }
 
 function handleEventCreated(args) {
   createAddPopup(args.event, args.target)
 }
 
-function deleteEvent(event) {
-  myEvents.value = myEvents.value.filter((item) => item.id !== event.id)
+function handleEventDeleted(args) {
+  myEvents.value = myEvents.value.filter((e) => e.id !== args.event.id)
+}
+
+function handleEventClick(args) {
+  if (isDraggingProgress) {
+    return
+  }
+  createEditPopup(args.event, args.domEvent.currentTarget)
 }
 
 function handlePopupClose() {
-  // Remove event if popup is cancelled
-  if (addedEvent) {
-    deleteEvent(addedEvent)
+  if (!isEdit) {
+    // Refresh the list, if add popup was canceled, to remove the temporary event
+    myEvents.value = [...myEvents.value]
   }
   isPopupOpen.value = false
 }
@@ -282,11 +266,13 @@ function handlePopupClose() {
 const handleProgressArrowMouseDown = (e) => {
   const progressArrow = e.target.closest('.mds-progress-arrow')
 
-  if (!progressArrow) return
+  if (!progressArrow) {
+    return
+  }
 
   e.stopPropagation()
 
-  isDraggingProgress.value = true
+  isDraggingProgress = true
 
   const progressBar = progressArrow.closest('.mds-progress-bar')
   const progressLabel = progressArrow
@@ -316,7 +302,9 @@ const handleProgressArrowMouseDown = (e) => {
     const eventToUpdate = myEvents.value.find((event) => event.id === eventId)
     eventToUpdate.progress = newProgress
 
-    setTimeout(() => (isDraggingProgress.value = false), 100)
+    setTimeout(() => {
+      isDraggingProgress = false
+    }, 100)
   }
 
   document.addEventListener('mousemove', handleMouseMove)
@@ -331,13 +319,13 @@ const handleProgressArrowMouseDown = (e) => {
       :view="myView"
       :data="myEvents"
       :resources="myResources"
-      clickToCreate="true"
+      :clickToCreate="true"
       :dragToCreate="true"
       :dragToMove="true"
       :dragToResize="true"
-      :selectedDate="mySelectedDate"
       @event-click="handleEventClick"
       @event-created="handleEventCreated"
+      @event-deleted="handleEventDeleted"
     >
       <template #scheduleEvent="data">
         <div class="mds-progress-event" :style="{ background: data.color }">
@@ -366,7 +354,7 @@ const handleProgressArrowMouseDown = (e) => {
       :contentPadding="false"
       :fullScreen="true"
       :isOpen="isPopupOpen"
-      :responsive="myResponsive"
+      :responsive="popupResponsive"
       :anchor="popupAnchor"
       :buttons="popupButtons"
       :headerText="popupHeaderText"
@@ -376,15 +364,14 @@ const handleProgressArrowMouseDown = (e) => {
         <MbscInput label="Title" v-model="popupEventTitle" />
       </div>
       <div class="mbsc-form-group">
-        <MbscInput ref="startInput" label="Starts" />
-        <MbscInput ref="endInput" label="Ends" />
+        <MbscInput ref="datePickerStartInput" label="Starts" />
+        <MbscInput ref="datePickerEndInput" label="Ends" />
         <MbscDatepicker
           v-model="popupEventDates"
           select="range"
-          :controls="datePickerControls"
           :responsive="datePickerResponsive"
-          :startInput="startInput"
-          :endInput="endInput"
+          :startInput="datePickerStartInput"
+          :endInput="datePickerEndInput"
           :showRangeLabels="false"
         />
       </div>
