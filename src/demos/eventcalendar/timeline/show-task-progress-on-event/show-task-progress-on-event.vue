@@ -465,7 +465,7 @@ const handleProgressArrowMouseDown = (e) => {
   position: absolute;
   right: 5px;
   top: 50%;
-  margin-top: -8px;
+  margin-top: -10px;
   color: white;
   font-weight: bold;
   font-size: 14px;
