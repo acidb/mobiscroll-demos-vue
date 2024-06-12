@@ -9,7 +9,6 @@ setOptions({
 const now = new Date()
 const day = now.getDay()
 const monday = now.getDate() - day + (day == 0 ? -6 : 1)
-
 const myEvents = [
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday),
@@ -142,16 +141,13 @@ const myEvents = [
 ]
 
 const myView = {
-  agenda: {
+  timeline: {
     type: 'week'
   }
-}
-
-function orderMyEvents(event) {
-  return event.accepted ? 1 : -1
 }
 </script>
 
 <template>
-  <MbscEventcalendar :view="myView" :data="myEvents" :eventOrder="orderMyEvents" />
+  <!-- dragOptions -->
+  <MbscEventcalendar :view="myView" :data="myEvents" />
 </template>

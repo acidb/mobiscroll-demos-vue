@@ -107,11 +107,7 @@ onMounted(() => {
         />
       </div>
       <div ref="dropCont" class="mbsc-col-sm-3 external-drop-cont">
-        <MbscDropcontainer
-          :element="$refs.dropCont"
-          :style="{ background: contBg }"
-          @item-drop="handleItemDrop($event)"
-        >
+        <MbscDropcontainer :element="$refs.dropCont" @item-drop="handleItemDrop($event)">
           <div class="mbsc-form-group-title">Available tasks</div>
           <div v-for="(task, i) in myTasks" :key="task.id">
             <div ref="dragElements" class="external-drop-task" :style="{ background: task.color }">
@@ -124,7 +120,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <MbscToast :message="toastMessage" :isOpen="isToastOpen" :close="handleToastClose" />
+  <MbscToast :message="toastMessage" :isOpen="isToastOpen" @close="handleToastClose" />
 </template>
 
 <style>

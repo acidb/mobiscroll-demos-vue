@@ -199,6 +199,10 @@ onMounted(() => {
   text-decoration: underline;
 }
 
+.mds-tasks-calendar .mbsc-timeline-row {
+  height: 174px;
+}
+
 .mds-tasks-calendar .mbsc-schedule-event-inner {
   display: block;
   height: auto;
