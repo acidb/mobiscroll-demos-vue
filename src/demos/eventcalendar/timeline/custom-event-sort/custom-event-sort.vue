@@ -142,7 +142,10 @@ const myEvents = [
 
 const myView = {
   timeline: {
-    type: 'week'
+    type: 'week',
+    eventList: true,
+    startDay: 1,
+    endDay: 5
   }
 }
 </script>
