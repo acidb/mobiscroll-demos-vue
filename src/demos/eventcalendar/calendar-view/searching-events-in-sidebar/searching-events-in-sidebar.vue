@@ -16,44 +16,31 @@ setOptions({
 
 const calEvents = ref([])
 const listEvents = ref([])
-const mySelectedEvent = ref([])
-const showList = ref(false)
-const currentDate = ref(new Date())
+const selectedEvent = ref([])
+const displayResults = ref(false)
+
+const calInst = ref(null)
 const timer = ref(null)
 
-const calView = {
-  calendar: {
-    labels: true
-  }
-}
+const calView = { calendar: { labels: true } }
+const listView = { agenda: { type: 'year', size: 5 } }
 
-const listView = {
-  agenda: {
-    type: 'year',
-    size: 5
-  }
-}
+function handleInputChange(ev) {
+  const searchText = ev.target.value
 
-function handleSearch(ev) {
-  const text = ev.target.value
-
-  if (timer.value) {
-    clearTimeout(timer.value)
-    timer.value = null
-  }
-
+  clearTimeout(timer.value)
   timer.value = setTimeout(() => {
-    if (text.length > 0) {
+    if (searchText.length > 0) {
       getJson(
-        'https://trial.mobiscroll.com/searchevents/?text=' + text,
+        'https://trial.mobiscroll.com/searchevents/?text=' + searchText,
         (data) => {
           listEvents.value = data
-          showList.value = true
+          displayResults.value = true
         },
         'jsonp'
       )
     } else {
-      showList.value = false
+      displayResults.value = false
     }
   }, 200)
 }
@@ -74,40 +61,41 @@ function handlePageLoading(args) {
 }
 
 function handleEventClick(args) {
-  currentDate.value = args.event.start
-  mySelectedEvent.value = [args.event]
+  selectedEvent.value = [args.event]
+  calInst.value.instance.navigateToEvent(args.event)
 }
 </script>
 
 <template>
-  <MbscPage>
-    <div class="md-search-events-sidebar mbsc-flex">
-      <div class="md-search-events-cont mbsc-flex-col mbsc-flex-none">
+  <MbscPage cssClass="mds-full-height">
+    <div class="mds-full-height mbsc-flex">
+      <div class="mds-search-sidebar mbsc-flex-col mbsc-flex-none">
         <MbscInput
+          autocomplete="off"
           startIcon="material-search"
           inputStyle="outline"
           placeholder="Search events"
-          @input="handleSearch"
+          @input="handleInputChange"
         />
         <MbscEventcalendar
-          v-if="showList"
-          :view="listView"
+          v-if="displayResults"
           :data="listEvents"
           :showControls="false"
+          :view="listView"
           @event-click="handleEventClick"
         />
       </div>
-      <div class="md-search-events-calendar mbsc-flex-1-1">
+      <div class="mds-search-calendar mbsc-flex-1-1">
         <MbscEventcalendar
+          ref="calInst"
           :clickToCreate="false"
+          :data="calEvents"
           :dragToCreate="false"
           :dragToMove="false"
           :dragToResize="false"
           :selectMultipleEvents="true"
+          :selectedEvents="selectedEvent"
           :view="calView"
-          :data="calEvents"
-          :selectedEvents="mySelectedEvent"
-          :selectedDate="currentDate"
           @page-loading="handlePageLoading"
         />
       </div>
@@ -116,39 +104,38 @@ function handleEventClick(args) {
 </template>
 
 <style>
-.md-search-events-cont {
+.mds-full-height {
+  height: 100%;
+}
+
+.mds-search-calendar {
+  border-left: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.mds-search-sidebar {
   width: 350px;
 }
 
-.md-search-events-cont .mbsc-textfield-wrapper.mbsc-ios {
-  margin-top: 8px;
-  margin-bottom: 9px;
+.mds-search-sidebar .mbsc-textfield-wrapper.mbsc-ios {
+  margin-top: 27px;
+  margin-bottom: 26px;
 }
 
-.md-search-events-cont .mbsc-textfield-wrapper.mbsc-material {
-  margin-top: 15px;
-  margin-bottom: 15px;
+.mds-search-sidebar .mbsc-textfield-wrapper.mbsc-material {
+  margin-top: 26px;
+  margin-bottom: 26px;
 }
 
-.md-search-events-cont .mbsc-textfield-wrapper.mbsc-windows {
-  margin-top: 28px;
-  margin-bottom: 29px;
+.mds-search-sidebar .mbsc-textfield-wrapper.mbsc-windows {
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 
 @media (min-width: 1135px) {
-  .md-search-events-cont .mbsc-textfield-wrapper.mbsc-ios {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  .mds-search-sidebar .mbsc-textfield-wrapper.mbsc-windows {
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
-}
-
-.md-search-events-calendar {
-  border-left: 1px solid #ccc;
-}
-
-.demo-searching-events-in-sidebar,
-.md-search-events-sidebar,
-.md-search-events-calendar {
-  height: 100%;
 }
 </style>

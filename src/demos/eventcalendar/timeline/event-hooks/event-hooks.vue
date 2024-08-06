@@ -106,6 +106,12 @@ function handleEventDragStart() {
 function handleEventDragEnd() {
   // Logic for event drag end
 }
+function handleEventDragEnter() {
+  // Logic for event drag enter
+}
+function handleEventDragLeave() {
+  // Logic for event drag leave
+}
 function handleEventHoverIn() {
   // Logic for event hover in
 }
@@ -184,6 +190,8 @@ onMounted(() => {
     @event-double-click="handleEventDoubleClick"
     @event-drag-start="handleEventDragStart"
     @event-drag-end="handleEventDragEnd"
+    @event-drag-enter="handleEventDragEnter"
+    @event-drag-leave="handleEventDragLeave"
     @event-hover-in="handleEventHoverIn"
     @event-hover-out="handleEventHoverOut"
     @event-right-click="handleEventRightClick"

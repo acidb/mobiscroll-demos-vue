@@ -70,7 +70,7 @@ const myView = {
 }
 const isEdit = ref(false)
 const popupEventColor = ref('')
-const mySelectedDate = ref()
+
 let addedEvent = null
 let editedEvent = null
 
@@ -131,6 +131,7 @@ const isColorPickerOpen = ref(false)
 const tempColor = ref('')
 const colorElm = ref(null)
 const colorPopup = ref(null)
+const calInst = ref(null)
 
 const colorButtons = [
   'cancel',
@@ -198,8 +199,8 @@ function createAddPopup(event, target) {
           color: popupEventColor.value
         }
         myEvents.value = [...myEvents.value, newEvent]
-        mySelectedDate.value = popupEventDates.value[0]
         isPopupOpen.value = false
+        calInst.value.instance.navigateToEvent(newEvent)
       },
       cssClass: 'mbsc-popup-button-primary'
     }
@@ -240,8 +241,8 @@ function createEditPopup(event, target) {
         const index = newEventList.findIndex((x) => x.id === updatedEvent.id)
         newEventList[index] = updatedEvent
         myEvents.value = newEventList
-
         isPopupOpen.value = false
+        calInst.value.instance.navigateToEvent(updatedEvent)
       },
       cssClass: 'mbsc-popup-button-primary'
     }
@@ -306,13 +307,13 @@ function handleSnackbarClose() {
 
 <template>
   <MbscEventcalendar
-    :view="myView"
-    :data="myEvents"
-    clickToCreate="double"
+    ref="calInst"
+    :clickToCreate="true"
     :dragToCreate="true"
     :dragToMove="true"
     :dragToResize="true"
-    :selectedDate="mySelectedDate"
+    :data="myEvents"
+    :view="myView"
     @event-click="handleEventClick"
     @event-created="handleEventCreated"
     @event-deleted="handleEventDeleted"
