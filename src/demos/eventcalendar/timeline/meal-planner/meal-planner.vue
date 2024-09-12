@@ -171,7 +171,7 @@ function handleEventClick(args) {
 
 function handleEventCreated(args) {
   const event = args.event
-  const resource = types.find((obj) => obj.id === event.resource)
+  const resource = args.resourceObj
   isEdit.value = false
   tempMeal.value = event
   // fill popup form with event data

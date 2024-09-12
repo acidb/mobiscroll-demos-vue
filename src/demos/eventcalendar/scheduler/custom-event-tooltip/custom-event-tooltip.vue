@@ -471,7 +471,7 @@ const myView = ref({
 
 function openTooltip(args) {
   const event = args.event
-  const doctor = doctors.find((dr) => dr.id === event.resource)
+  const doctor = args.resourceObj
   const time =
     formatDate('hh:mm A', new Date(event.start)) +
     ' - ' +

@@ -358,8 +358,8 @@ function saveEvent(event) {
 
 function handleEventClick(args) {
   const event = args.event
-  const resource = staff.find((r) => r.id === event.resource)
-  const slot = mySlots.find((s) => s.id === event.slot)
+  const resource = args.resourceObj
+  const slot = args.slotObj
 
   fillPopup(event, true)
   popupButtons.value = [
@@ -388,7 +388,7 @@ function handleEventClick(args) {
 
 function handleEventCreated(args) {
   const event = args.event
-  const slot = mySlots.find((s) => s.id === event.slot)
+  const slot = args.slotObj
 
   fillPopup(event, false)
   popupButtons.value = [

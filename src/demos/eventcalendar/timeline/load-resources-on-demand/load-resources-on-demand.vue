@@ -153,24 +153,8 @@ const myView = {
   }
 }
 
-function getResourceById(resources, resourceId) {
-  for (let i = 0; i < resources.length; i++) {
-    const resource = resources[i]
-    if (resource.id === resourceId) {
-      return resource
-    } else {
-      if (resource.children) {
-        const child = getResourceById(resource.children, resourceId)
-        if (child) {
-          return child
-        }
-      }
-    }
-  }
-}
-
 function loadChildResources(args) {
-  const resource = getResourceById(myResources.value, args.resource)
+  const resource = args.resourceObj
 
   if (!resource.loaded) {
     getJson(

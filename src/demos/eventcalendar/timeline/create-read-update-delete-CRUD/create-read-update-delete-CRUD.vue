@@ -192,17 +192,21 @@ const snackbarButton = {
 }
 
 // Fills the popup with the event's data
-function fillPopup(event) {
+function fillPopup(args) {
+  const event = args.event
   popupEventTitle.value = event.title
   popupEventDescription.value = event.description
   popupEventAllDay.value = event.allDay || false
   popupTravelTime.value = event.bufferBefore || 0
   popupEventDates.value = [event.start, event.end]
   popupEventStatus.value = event.status || 'busy'
-  popupEventColor.value = event.color || ''
+  popupEventColor.value = event.color || args.resourceObj.color
 }
 
-function createAddPopup(event, target) {
+function createAddPopup(args) {
+  const event = args.event
+  const target = args.target
+  const resource = args.resourceObj
   // Hide delete button inside add popup
   isEdit.value = false
 
@@ -225,7 +229,7 @@ function createAddPopup(event, target) {
           status: popupEventStatus.value,
           start: popupEventDates.value[0],
           end: popupEventDates.value[1],
-          color: popupEventColor.value,
+          color: popupEventColor.value || resource.color,
           resource: event.resource
         }
         myEvents.value = [...myEvents.value, newEvent]
@@ -237,11 +241,14 @@ function createAddPopup(event, target) {
   ]
   popupAnchor.value = target
 
-  fillPopup(event)
+  fillPopup(args)
   isPopupOpen.value = true
 }
 
-function createEditPopup(event, target) {
+function createEditPopup(args) {
+  const event = args.event
+  const target = args.domEvent.currentTarget
+  const resource = args.resourceObj
   // Show delete button inside edit popup
   isEdit.value = true
 
@@ -264,7 +271,7 @@ function createEditPopup(event, target) {
         updatedEvent.bufferBefore = popupTravelTime.value
         updatedEvent.start = popupEventDates.value[0]
         updatedEvent.end = popupEventDates.value[1]
-        updatedEvent.color = popupEventColor.value
+        updatedEvent.color = popupEventColor.value || resource.color
         updatedEvent.status = popupEventStatus.value
         // Update event
         let newEventList = [...myEvents.value]
@@ -278,17 +285,17 @@ function createEditPopup(event, target) {
     }
   ]
   popupAnchor.value = target
-  fillPopup(event)
+  fillPopup(args)
   isPopupOpen.value = true
 }
 
 // Calendar events
 function handleEventClick(args) {
-  createEditPopup(args.event, args.domEvent.currentTarget)
+  createEditPopup(args)
 }
 
 function handleEventCreated(args) {
-  createAddPopup(args.event, args.target)
+  createAddPopup(args)
 }
 
 function deleteEvent(event) {
