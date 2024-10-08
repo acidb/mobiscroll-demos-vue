@@ -74,6 +74,7 @@ const datetimePickerControls = ['calendar', 'time']
 const popupEventTitle = ref('')
 const popupEventDescription = ref('')
 const popupEventDates = ref([new Date(), new Date()])
+const popupEventStatus = ref('free')
 
 const toastMessage = ref('Event added')
 const isToastOpen = ref(false)
@@ -125,6 +126,7 @@ function openPopup() {
           cssClass: 'mbsc-popup-button-primary'
         }
       ]"
+      @close="isPopupOpen = false"
     >
       <div class="mbsc-form-group">
         <MbscInput label="Title" v-model="popupEventTitle" />
@@ -146,8 +148,8 @@ function openPopup() {
           :endInput="endInput"
           :showRangeLabels="false"
         />
-        <MbscSegmentedGroup>
-          <MbscSegmented value="busy" :defaultChecked="true">Show as busy</MbscSegmented>
+        <MbscSegmentedGroup v-model="popupEventStatus">
+          <MbscSegmented value="busy">Show as busy</MbscSegmented>
           <MbscSegmented value="free">Show as free</MbscSegmented>
         </MbscSegmentedGroup>
         <MbscToast :message="toastMessage" :isOpen="isToastOpen" @close="isToastOpen = false" />

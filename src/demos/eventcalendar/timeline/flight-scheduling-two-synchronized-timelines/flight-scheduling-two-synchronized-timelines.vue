@@ -466,7 +466,7 @@ function detachSecondScroll() {
 
 function handlePageLoading(args) {
   if (secondCalCont.value) {
-    setTimeout(function () {
+    setTimeout(() => {
       mySelectedDate.value = args.firstDay
     }, 100)
   }
@@ -516,8 +516,8 @@ function handleEventDragStart(args) {
       flight.cssClass = 'md-drag-drop-faded'
     }
   })
-  jets.forEach(function (group) {
-    group.children.forEach(function (jet) {
+  jets.forEach((group) => {
+    group.children.forEach((jet) => {
       if (unavailable[jet.id]) {
         inv.resource.push(jet.id)
       }

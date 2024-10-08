@@ -46,9 +46,7 @@ const calendars = [
   }
 ]
 
-const calendarIds = calendars.map(function (cal) {
-  return cal.id
-})
+const calendarIds = calendars.map((cal) => cal.id)
 
 const myEvents = ref([])
 const firstDay = ref(null)
@@ -70,8 +68,8 @@ function onError(resp) {
 function loadEvents() {
   googleCalendarSync
     .getEvents(calendarIds, firstDay.value, lastDay.value)
-    .then(function (resp) {
-      resp.forEach(function (event) {
+    .then((resp) => {
+      resp.forEach((event) => {
         event.resource = event.googleCalendarId
       })
       myEvents.value = resp

@@ -1611,9 +1611,7 @@ const myDefaultEvent = (args) => {
   if (timelineInst.value.instance) {
     const events = timelineInst.value.instance
       .getEvents(args.start, new Date(+args.start + 3600000))
-      .filter(function (e) {
-        return e.resource === args.resource
-      })
+      .filter((e) => e.resource === args.resource)
     const isShift = events.length === 0
     return {
       order: isShift ? 1 : 2,
@@ -1628,9 +1626,7 @@ const myDefaultEvent = (args) => {
 
 const handelEventCreate = (args, inst) => {
   const event = args.event
-  const overlapEvents = inst.getEvents(event.start, event.end).filter(function (e) {
-    return e.resource === event.resource
-  })
+  const overlapEvents = inst.getEvents(event.start, event.end).filter((e) => e.resource === event.resource)
 
   if (event.shift) {
     // Tasks was created
@@ -1672,14 +1668,10 @@ const handelEventDelete = (args) => {
   }
 
   if (event.shift) {
-    const shift = newEventList.find(function (ev) {
-      return ev.resource === event.resource && ev.id === event.shift
-    })
+    const shift = newEventList.find((ev) => ev.resource === event.resource && ev.id === event.shift)
 
     // Remove the deleted task id from the shift data
-    shift.tasks = shift.tasks.filter(function (t) {
-      return t !== event.id
-    })
+    shift.tasks = shift.tasks.filter((t) => t !== event.id)
   }
   myEvents.value = newEventList
 }
@@ -1691,11 +1683,9 @@ const handelEventDragStart = (args, inst) => {
 
   if (event.tasks) {
     // Shift
-    const shiftsInResource = events.filter(function (e) {
-      return e.tasks !== undefined && e.resource === event.resource && e.id !== event.id
-    })
+    const shiftsInResource = events.filter((e) => e.tasks !== undefined && e.resource === event.resource && e.id !== event.id)
 
-    shiftsInResource.forEach(function (e) {
+    shiftsInResource.forEach((e) => {
       tempInvalid.push({
         start: e.start,
         end: e.end,
@@ -1708,9 +1698,7 @@ const handelEventDragStart = (args, inst) => {
     myInvalids.value = [...blockedOutTimes, ...tempInvalid]
   } else {
     // Subtask
-    const shift = events.find(function (ev) {
-      return ev.resource === event.resource && ev.id === event.shift
-    })
+    const shift = events.find((ev) => ev.resource === event.resource && ev.id === event.shift)
     tempInvalid.push(
       {
         start: new Date(+new Date(shift.start) - 7 * 86400000),
@@ -1754,10 +1742,8 @@ const handelEventUpdate = (args, inst) => {
     const isMove = startDiff === endDiff
     const isResize = !isMove && (startResize || endResize)
 
-    const tasks = event.tasks.map(function (el) {
-      const t = newEventList.find(function (e) {
-        return e.id === el
-      })
+    const tasks = event.tasks.map((el) => {
+      const t = newEventList.find((e) => e.id === el)
       subTasksDuration += +new Date(t.end) - +new Date(t.start)
       return t
     })
@@ -1775,7 +1761,7 @@ const handelEventUpdate = (args, inst) => {
     // Resize or move
     if (isResize || startDiff === endDiff) {
       // Update subtask
-      tasks.forEach(function (task, i) {
+      tasks.forEach((task, i) => {
         const taskStart = new Date(task.start)
         const taskEnd = new Date(task.end)
         if (isResize) {
@@ -1794,9 +1780,7 @@ const handelEventUpdate = (args, inst) => {
     }
   } else {
     // Subtask was updated
-    const eventOverlap = inst.getEvents(event.start, event.end).filter(function (e) {
-      return e.resource === event.resource
-    })
+    const eventOverlap = inst.getEvents(event.start, event.end).filter((e) => e.resource === event.resource)
     if (eventOverlap.length > 2) {
       // Don't let subtask to overlap
       newEventList.splice(evIndex, 1, oldEvent)

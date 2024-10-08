@@ -848,7 +848,7 @@ const eventsWithSummaries = ref(myEvents.value)
 
 function getAggregateEvents(dayEvents) {
   const aggregateEvents = {}
-  myResources.forEach(function (resource) {
+  myResources.forEach((resource) => {
     for (let date = new Date(firstViewDay); date < lastViewDay; date.setDate(date.getDate() + 1)) {
       aggregateEvents[resource.id + +date] = {
         id: resource.id + +date,
@@ -862,7 +862,7 @@ function getAggregateEvents(dayEvents) {
       }
     }
   })
-  dayEvents.forEach(function (event) {
+  dayEvents.forEach((event) => {
     if (!event.isSummary) {
       const parentResource = event.resource.split('_')[0]
       const dayStart = new Date(event.start).setHours(0, 0, 0, 0)
