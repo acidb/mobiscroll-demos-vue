@@ -142,9 +142,7 @@ const myEvents = [
 ]
 
 const myView = {
-  agenda: {
-    type: 'week'
-  }
+  agenda: { type: 'week' }
 }
 </script>
 

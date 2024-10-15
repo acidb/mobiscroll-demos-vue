@@ -14,21 +14,17 @@ setOptions({
   // theme
 })
 
+const inst = ref(null)
 const myEvents = ref([])
-const calendarRef = ref(null)
-const myView = {
-  agenda: {
-    type: 'month'
-  }
-}
+const myView = { agenda: { type: 'month' } }
 
 function printView() {
-  calendarRef.value.instance.print()
+  inst.value.instance.print()
 }
 
 onMounted(() => {
   getJson(
-    'https://trial.mobiscroll.com/work-events/',
+    'https://trial.mobiscroll.com/events/?vers=5',
     (events) => {
       myEvents.value = events
     },
@@ -38,9 +34,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <MbscPage>
-    <MbscButton @click="printView()">Print agenda</MbscButton>
-    <!-- dragOptions -->
-    <MbscEventcalendar ref="calendarRef" :data="myEvents" :view="myView" :modules="[print]" />
+  <MbscPage className="mds-full-height">
+    <div className="mds-full-height mbsc-flex-col">
+      <div className="mbsc-flex-none">
+        <MbscButton @click="printView()" startIcon="print"> Print agenda </MbscButton>
+      </div>
+      <div className="mds-overflow-hidden mbsc-flex-1-1">
+        <MbscEventcalendar ref="inst" :data="myEvents" :modules="[print]" :view="myView" />
+      </div>
+    </div>
   </MbscPage>
 </template>
+
+<style>
+.mds-full-height {
+  height: 100%;
+}
+
+.mds-overflow-hidden {
+  overflow: hidden;
+}
+</style>

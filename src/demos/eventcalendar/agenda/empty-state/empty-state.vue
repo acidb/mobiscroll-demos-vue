@@ -12,42 +12,34 @@ setOptions({
   // theme
 })
 
+const isToastOpen = ref(false)
+
 const myEvents = [
   {
     title: 'Zumba Class',
-    start: '2023-10-20T17:00',
-    end: '2023-10-20T19:00'
+    start: 'dyndatetime(y,m,d-7,17)',
+    end: 'dyndatetime(y,m,d-7,19)'
   },
   {
     title: 'Silent Party',
-    start: '2023-10-20T21:00',
-    end: '2023-10-20T23:00'
+    start: 'dyndatetime(y,m,d-7,21)',
+    end: 'dyndatetime(y,m,d-7,23)'
   },
   {
     title: 'Garbage Collection',
-    start: '2023-11-03T15:00',
-    end: '2023-11-03T17:00'
+    start: 'dyndatetime(y,m,d+7,15)',
+    end: 'dyndatetime(y,m,d+7,17)'
   },
   {
     title: 'Karaoke Night',
-    start: '2023-11-03T20:00',
-    end: '2023-11-03T22:00'
+    start: 'dyndatetime(y,m,d+7,20)',
+    end: 'dyndatetime(y,m,d+7,22)'
   }
 ]
-
-const isToastOpen = ref(false)
 
 const myView = {
   calendar: { type: 'week' },
   agenda: { type: 'week' }
-}
-
-function displayToast() {
-  isToastOpen.value = true
-}
-
-function handleToastClose() {
-  isToastOpen.value = false
 }
 </script>
 
@@ -56,6 +48,7 @@ function handleToastClose() {
     <template #agendaEmpty>
       <div class="mbsc-align-center mbsc-padding">
         <img
+          class="mds-empty-img"
           src="https://img.mobiscroll.com/demos/smart-empty-tin-can.png"
           alt="Empty can"
           style="width: 150px; margin: 50px 0"
@@ -63,16 +56,28 @@ function handleToastClose() {
         <div class="mbsc-margin mbsc-medium mbsc-italic mbsc-txt-muted">
           Looks like this can is empty
         </div>
-        <MbscButton color="primary" variant="outline" @click="displayToast()">
+        <MbscButton color="primary" variant="outline" @click="isToastOpen = true">
           Add something to it
         </MbscButton>
-        <div class="mbsc-txt-xs" style="padding-top: 150px">
-          Illustration by
-          <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a>
-          from <a href="https://icons8.com/illustrations">Ouch!</a>
+        <div class="mds-empty-txt mbsc-txt-xs">
+          Illustration by &nbsp;<a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA"
+            >Icons 8</a
+          >
+          &nbsp;from&nbsp;<a href="https://icons8.com/illustrations">Ouch!</a>
         </div>
       </div>
     </template>
   </MbscEventcalendar>
-  <MbscToast message="Add button clicked" :isOpen="isToastOpen" @close="handleToastClose" />
+  <MbscToast message="Add button clicked" :isOpen="isToastOpen" @close="isToastOpen = false" />
 </template>
+
+<style>
+.mds-empty-img {
+  width: 150px;
+  margin: 50px 0;
+}
+
+.mds-empty-txt {
+  padding-top: 150px;
+}
+</style>

@@ -24,4 +24,4 @@ onMounted(() => {
 })
 </script>
 
-<template><MbscEventcalendar :view="myView" :data="myEvents" /></template>
+<template><MbscEventcalendar :data="myEvents" :view="myView" /></template>

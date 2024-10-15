@@ -14,17 +14,7 @@ setOptions({
 
 const myEvents = ref([])
 const mySelectedDate = ref(new Date())
-const dayView = {
-  agenda: { type: 'day' }
-}
-
-function handleSelectedDateChange(args) {
-  mySelectedDate.value = args.date
-}
-
-function handleDateChange(args) {
-  mySelectedDate.value = args.value
-}
+const dayView = { agenda: { type: 'day' } }
 
 onMounted(() => {
   getJson(
@@ -40,14 +30,18 @@ onMounted(() => {
 <template>
   <div class="mds-external-nav-agenda mbsc-flex">
     <div class="mds-external-nav-dp">
-      <MbscDatepicker display="inline" :value="mySelectedDate" @change="handleDateChange" />
+      <MbscDatepicker
+        display="inline"
+        :value="mySelectedDate"
+        @change="mySelectedDate = $event.value"
+      />
     </div>
     <div class="mds-external-nav-ec mbsc-flex-1-1">
       <MbscEventcalendar
-        :view="dayView"
         :data="myEvents"
         :selectedDate="mySelectedDate"
-        @selected-date-change="handleSelectedDateChange"
+        :view="dayView"
+        @selected-date-change="mySelectedDate = $event.date"
       />
     </div>
   </div>

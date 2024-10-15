@@ -13,13 +13,11 @@ setOptions({
   // theme
 })
 
-const myView = {
-  agenda: {
-    type: 'month'
-  }
-}
+const selectedDateObj = ref(new Date(2020, 4, 19))
+const selectedDateISO = ref('2020-05-20')
+const selectedDateMoment = ref(moment([2020, 4, 21]))
 
-const dateObjData = ref([
+const dateObjEvents = ref([
   {
     start: new Date(2020, 4, 19, 7),
     end: new Date(2020, 4, 19, 8),
@@ -28,9 +26,7 @@ const dateObjData = ref([
   }
 ])
 
-const selectedObj = ref(new Date(2020, 4, 19))
-
-const isoData = ref([
+const dateISOEvents = ref([
   {
     start: '2020-05-20T07:00:00',
     end: '2020-05-20T08:00:00',
@@ -39,9 +35,7 @@ const isoData = ref([
   }
 ])
 
-const selectedISO = ref('2020-05-20')
-
-const momentData = ref([
+const dateMomentEvents = ref([
   {
     start: moment([2020, 4, 21, 7]),
     end: moment([2020, 4, 21, 8]),
@@ -50,36 +44,38 @@ const momentData = ref([
   }
 ])
 
-const selectedMoment = ref(moment([2020, 4, 21]))
+const myView = {
+  agenda: { type: 'month' }
+}
 
-function addDate() {
+function addDateObjEvent() {
   const newEvent = {
     start: new Date(2020, 4, 19, 10, 45),
     end: new Date(2020, 4, 19, 11, 45),
     text: 'New Event'
   }
-  dateObjData.value = [...dateObjData.value, newEvent]
-  selectedObj.value = new Date(2020, 4, 19)
+  dateObjEvents.value = [...dateObjEvents.value, newEvent]
+  selectedDateObj.value = new Date(2020, 4, 19)
 }
 
-function addISO() {
+function addDateISOEvent() {
   const newEvent = {
     start: '2020-05-20T12:30:00',
     end: '2020-05-20T13:00:00',
     text: 'New Event'
   }
-  isoData.value = [...isoData.value, newEvent]
-  selectedISO.value = '2020-05-20'
+  dateISOEvents.value = [...dateISOEvents.value, newEvent]
+  selectedDateISO.value = '2020-05-20'
 }
 
-function addMoment() {
+function addDateMomentEvent() {
   const newEvent = {
     start: moment([2020, 4, 21, 11]),
     end: moment([2020, 4, 21, 14]),
     text: 'New Event'
   }
-  momentData.value = [...momentData.value, newEvent]
-  selectedMoment.value = moment([2020, 4, 21])
+  dateMomentEvents.value = [...dateMomentEvents.value, newEvent]
+  selectedDateMoment.value = moment([2020, 4, 21])
 }
 </script>
 
@@ -91,36 +87,51 @@ function addMoment() {
           <div class="mbsc-form-group">
             <div class="mbsc-form-group-title">Date object</div>
             <div class="mbsc-button-group-block">
-              <MbscButton @click="addDate">
+              <MbscButton @click="addDateObjEvent">
                 start: new Date(2020, 4, 19, 10, 45) <br />
                 end: new Date(2020, 4, 19, 11, 45)
               </MbscButton>
             </div>
-            <MbscEventcalendar :data="dateObjData" :view="myView" :selectedDate="selectedObj" />
+            <MbscEventcalendar
+              :data="dateObjEvents"
+              :view="myView"
+              :selectedDate="selectedDateObj"
+              @selected-date-change="selectedDateObj = $event.date"
+            />
           </div>
         </div>
         <div class="mbsc-col-sm-12 mbsc-col-md-4">
           <div class="mbsc-form-group">
-            <div class="mbsc-form-group-title">ISO string</div>
+            <div class="mbsc-form-group-title">ISO 8601 date string</div>
             <div class="mbsc-button-group-block">
-              <MbscButton @click="addISO">
+              <MbscButton @click="addDateISOEvent">
                 start: 2020-05-20T12:30:00 <br />
                 end: 2020-05-20T13:00:00
               </MbscButton>
             </div>
-            <MbscEventcalendar :data="isoData" :view="myView" :selectedDate="selectedISO" />
+            <MbscEventcalendar
+              :data="dateISOEvents"
+              :view="myView"
+              :selectedDate="selectedDateISO"
+              @selected-date-change="selectedDateISO = $event.date"
+            />
           </div>
         </div>
         <div class="mbsc-col-sm-12 mbsc-col-md-4">
           <div class="mbsc-form-group">
-            <div class="mbsc-form-group-title">Moment js</div>
+            <div class="mbsc-form-group-title">Moment.js object</div>
             <div class="mbsc-button-group-block">
-              <MbscButton @click="addMoment">
+              <MbscButton @click="addDateMomentEvent">
                 start: moment([2020, 4, 21, 11]) <br />
                 end: moment([2020, 4, 21, 14])
               </MbscButton>
             </div>
-            <MbscEventcalendar :data="momentData" :view="myView" :selectedDate="selectedMoment" />
+            <MbscEventcalendar
+              :data="dateMomentEvents"
+              :view="myView"
+              :selectedDate="selectedDateMoment"
+              @selected-date-change="selectedDateMoment = $event.date"
+            />
           </div>
         </div>
       </div>

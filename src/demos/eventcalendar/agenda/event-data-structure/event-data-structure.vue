@@ -30,12 +30,12 @@ const myView = { agenda: { type: 'month' } }
 
 function addEvent() {
   const newEvent = {
-    // base properties
+    // Base properties
     title: 'Product planning',
     color: '#56ca70',
     start: new Date(2018, 11, 21, 13),
     end: new Date(2018, 11, 21, 14),
-    // add any property you'd like
+    // Add any property you'd like
     busy: true,
     description: 'Weekly meeting with team',
     location: 'Office'
@@ -51,7 +51,7 @@ function addEvent() {
   <MbscPage cssClass="mds-full-height">
     <div className="mds-full-height mbsc-flex-col">
       <div class="mbsc-flex-none">
-        <MbscButton startIcon="plus" @click="addEvent()">Add event to calendar</MbscButton>
+        <MbscButton startIcon="plus" @click="addEvent">Add event to calendar</MbscButton>
       </div>
       <div className="mds-overflow-hidden mbsc-flex-1-1">
         <MbscEventcalendar ref="calInst" :data="myEvents" :view="myView" />

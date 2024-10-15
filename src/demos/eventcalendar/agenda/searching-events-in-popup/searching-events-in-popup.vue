@@ -21,12 +21,12 @@ setOptions({
 const calEvents = ref([])
 const isPopupOpen = ref(false)
 const listEvents = ref([])
-const searchInput = ref(null)
+const searchInput = ref()
 const selectedEvent = ref([])
 
-const calInst = ref(null)
-const timer = ref(null)
-const inputRef = ref(null)
+const calInst = ref()
+const timer = ref()
+const inputRef = ref()
 
 const calView = { agenda: { type: 'month' } }
 const listView = { agenda: { type: 'year', size: 5 } }
@@ -72,10 +72,6 @@ function handlePageLoading(args) {
   })
 }
 
-function handlePopupClose() {
-  isPopupOpen.value = false
-}
-
 function handleEventClick(args) {
   selectedEvent.value = [args.event]
   isPopupOpen.value = false
@@ -93,8 +89,8 @@ function handleInit() {
   <MbscEventcalendar
     ref="calInst"
     :data="calEvents"
-    :selectMultipleEvents="true"
     :selectedEvents="selectedEvent"
+    :selectMultipleEvents="true"
     :view="calView"
     @init="handleInit"
     @page-loading="handlePageLoading"
@@ -128,8 +124,8 @@ function handleInit() {
     :scrollLock="false"
     :showArrow="false"
     :showOverlay="false"
-    :width="200"
-    @close="handlePopupClose"
+    :width="400"
+    @close="isPopupOpen = false"
   >
     <MbscEventcalendar
       cssClass="mds-search-results"

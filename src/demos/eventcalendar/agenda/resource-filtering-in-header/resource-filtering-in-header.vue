@@ -20,31 +20,15 @@ setOptions({
 
 const filteredEvents = ref([])
 const myEvents = ref([])
+const myView = { agenda: { type: 'month' } }
 const selectedResources = ref([1])
 const isToastOpen = ref(false)
 const toastMessage = ref('')
 
-const myView = { agenda: { type: 'month' } }
-
 const myResources = [
-  {
-    id: 1,
-    name: 'Barry',
-    color: '#328e39',
-    img: 'https://img.mobiscroll.com/demos/m1.png'
-  },
-  {
-    id: 2,
-    name: 'Hortense',
-    color: '#00aabb',
-    img: 'https://img.mobiscroll.com/demos/f1.png'
-  },
-  {
-    id: 3,
-    name: 'Carl',
-    color: '#ea72c0',
-    img: 'https://img.mobiscroll.com/demos/m2.png'
-  }
+  { id: 1, name: 'Barry', color: '#328e39', img: 'https://img.mobiscroll.com/demos/m1.png' },
+  { id: 2, name: 'Hortense', color: '#00aabb', img: 'https://img.mobiscroll.com/demos/f1.png' },
+  { id: 3, name: 'Carl', color: '#ea72c0', img: 'https://img.mobiscroll.com/demos/m2.png' }
 ]
 
 function handleChange(ev) {
@@ -91,9 +75,9 @@ onMounted(() => {
           </MbscSegmented>
         </MbscSegmentedGroup>
       </div>
-      <MbscCalendarPrev className="mds-header-filter-prev" />
-      <MbscCalendarToday className="mds-header-filter-today" />
-      <MbscCalendarNext className="mds-header-filter-next" />
+      <MbscCalendarPrev cssClass="mds-header-filter-prev" />
+      <MbscCalendarToday cssClass="mds-header-filter-today" />
+      <MbscCalendarNext cssClass="mds-header-filter-next" />
     </template>
   </MbscEventcalendar>
   <MbscToast :message="toastMessage" :isOpen="isToastOpen" @close="isToastOpen = false" />

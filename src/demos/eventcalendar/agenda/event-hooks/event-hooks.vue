@@ -1,10 +1,5 @@
 <script setup>
-import {
-  getJson,
-  MbscDraggable,
-  MbscEventcalendar,
-  setOptions /* localeImport */
-} from '@mobiscroll/vue'
+import { getJson, MbscEventcalendar, setOptions /* localeImport */ } from '@mobiscroll/vue'
 import { onMounted, ref } from 'vue'
 
 setOptions({
@@ -13,60 +8,51 @@ setOptions({
 })
 
 const myEvents = ref([])
-const myView = {
-  agenda: {
-    type: 'month'
-  }
-}
-const myInvalids = [
-  {
-    recurring: {
-      repeat: 'weekly',
-      weekDays: 'SA,SU'
-    }
-  }
-]
-const dragData1 = {
-  title: 'External drag 1',
-  color: '#ffdab8'
-}
-const dragData2 = {
-  title: 'External drag 2',
-  color: '#ddfcf7'
-}
+const myView = { agenda: { type: 'month' } }
 
 function handleDestroy() {
-  // Logic for destroying the event calendar
+  // Logic running on component destroy
+  console.log('onDestroy')
 }
-function handleEventClick() {
+function handleEventClick(args) {
   // Logic for event click
+  console.log('onEventClick', args)
 }
-function handleEventDoubleClick() {
+function handleEventDoubleClick(args) {
   // Logic for event double click
+  console.log('onEventDoubleClick', args)
 }
-function handleEventHoverIn() {
+function handleEventHoverIn(args) {
   // Logic for event hover in
+  console.log('onEventHoverIn', args)
 }
-function handleEventHoverOut() {
+function handleEventHoverOut(args) {
   // Logic for event hover out
+  console.log('onEventHoverOut', args)
 }
-function handleEventRightClick() {
+function handleEventRightClick(args) {
   // Logic for event right click
+  console.log('onEventRightClick', args)
 }
 function handleInit() {
   // Logic running on component init
+  console.log('onInit')
 }
-function handlePageChange() {
-  // Your custom event handler goes here
+function handlePageChange(args) {
+  // Logic running on calendar page change
+  console.log('onPageChange', args)
 }
-function handlePageLoaded() {
+function handlePageLoaded(args) {
   // Use it to inject custom markup & attach custom listeners
+  console.log('onPageLoaded', args)
 }
-function handlePageLoading() {
+function handlePageLoading(args) {
   // Use it to load data on demand
+  console.log('onPageLoading', args)
 }
-function handleSelectedDateChange() {
+function handleSelectedDateChange(args) {
   // Use it to keep track of the selected date externally
+  console.log('onSelectedDateChange', args)
 }
 
 onMounted(() => {
@@ -81,24 +67,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="dragElm1" class="event-hooks-draggable" :style="{ background: '#ffdab8' }">
-    <div class="draggable-title">External drag 1</div>
-    <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm1" :dragData="dragData1" />
-  </div>
-  <div ref="dragElm2" class="event-hooks-draggable" :style="{ background: '#ddfcf7' }">
-    <div class="draggable-title">External drag 2</div>
-    <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm2" :dragData="dragData2" />
-  </div>
   <MbscEventcalendar
-    :view="myView"
     :data="myEvents"
-    :invalid="myInvalids"
-    :dragToCreate="true"
-    :dragToMove="true"
-    :dragToResize="true"
-    :externalDrop="true"
+    :view="myView"
     @destroy="handleDestroy"
     @event-click="handleEventClick"
     @event-double-click="handleEventDoubleClick"
@@ -108,7 +79,7 @@ onMounted(() => {
     @init="handleInit"
     @page-change="handlePageChange"
     @page-loaded="handlePageLoaded"
-    @page-oading="handlePageLoading"
+    @page-loading="handlePageLoading"
     @selected-date-change="handleSelectedDateChange"
   />
 </template>
