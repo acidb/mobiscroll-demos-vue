@@ -15,7 +15,8 @@ setOptions({
 const myEvents = ref([])
 const myView = {
   timeline: {
-    type: 'day'
+    type: 'day',
+    resourceReorder: true
   }
 }
 const myResources = ref([
@@ -142,6 +143,9 @@ function handlePageLoaded() {
 function handlePageLoading() {
   // Use it to load data on demand
 }
+function handleResourceOrderUpdate() {
+  // Logic for resource update
+}
 function handleSelectedDateChange() {
   // Use it to keep track of the selected date externally
 }
@@ -202,6 +206,7 @@ onMounted(() => {
     @page-change="handlePageChange"
     @page-loaded="handlePageLoaded"
     @page-oading="handlePageLoading"
+    @resource-order-update="handleResourceOrderUpdate"
     @selected-date-change="handleSelectedDateChange"
   />
 </template>
