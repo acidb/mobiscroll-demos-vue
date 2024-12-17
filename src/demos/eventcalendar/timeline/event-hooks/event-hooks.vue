@@ -143,6 +143,12 @@ function handlePageLoaded() {
 function handlePageLoading() {
   // Use it to load data on demand
 }
+function handleResourceDragEnd() {
+  // Logic for resource drag end
+}
+function handleResourceDragStart() {
+  // Logic for resource drag start
+}
 function handleResourceOrderUpdate() {
   // Logic for resource update
 }
@@ -206,6 +212,8 @@ onMounted(() => {
     @page-change="handlePageChange"
     @page-loaded="handlePageLoaded"
     @page-oading="handlePageLoading"
+    @resource-drag-end="handleResourceDragEnd"
+    @resource-drag-start="handleResourceDragStart"
     @resource-order-update="handleResourceOrderUpdate"
     @selected-date-change="handleSelectedDateChange"
   />

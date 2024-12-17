@@ -3,6 +3,7 @@ import {
   formatDate,
   getJson,
   MbscEventcalendar,
+  MbscToast,
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { ref } from 'vue'
@@ -13,7 +14,7 @@ setOptions({
 })
 
 const myEvents = ref([])
-
+const isToastOpen = ref(false)
 const myResources = [
   { id: 1, name: 'Resource 1', color: '#FF5733' },
   { id: 2, name: 'Resource 2', color: '#33FF57' },
@@ -54,9 +55,10 @@ const handleVirtualLoading = (args) => {
   const end = formatDate('YYYY-MM-DD', args.viewEnd)
 
   getJson(
-    'https://trialdev.mobiscroll.com/load-data-scroll/?start=' + start + '&end=' + end,
+    'https://trial.mobiscroll.com/load-data-scroll/?start=' + start + '&end=' + end,
     (data) => {
       myEvents.value = data.events
+      isToastOpen.value = true
     },
     'jsonp'
   )
@@ -71,6 +73,12 @@ const handleVirtualLoading = (args) => {
     :resources="myResources"
     :onVirtualLoading="handleVirtualLoading"
   />
+  <MbscToast
+    message="Loading events..."
+    :duration="1000"
+    :isOpen="isToastOpen"
+    @close="isToastOpen = false"
+  ></MbscToast>
 </template>
 
 <style></style>
