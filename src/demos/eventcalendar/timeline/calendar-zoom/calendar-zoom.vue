@@ -125,7 +125,7 @@ const myView = {
 
 onMounted(() => {
   getJson(
-    'https://trial.mobiscroll.com/timeline-events/',
+    'https://trial.mobiscroll.com/timeline-zoom-events/',
     (events) => {
       myEvents.value = events
     },
