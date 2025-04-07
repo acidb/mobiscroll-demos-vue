@@ -14,41 +14,22 @@ setOptions({
 })
 
 const myEvents = ref([])
-const myResources = ref([
-  {
-    id: 1,
-    name: 'Ryan',
-    color: '#fdf500'
-  },
-  {
-    id: 2,
-    name: 'Kate',
-    color: '#ff4600'
-  },
-  {
-    id: 3,
-    name: 'John',
-    color: '#ff0101'
-  },
-  {
-    id: 4,
-    name: 'Mark',
-    color: '#239a21'
-  },
-  {
-    id: 5,
-    name: 'Sharon',
-    color: '#8f1ed6'
-  },
-  {
-    id: 6,
-    name: 'Ashley',
-    color: '#01adff'
-  }
-])
+
 const myView = {
   timeline: { type: 'day' }
 }
+
+const myResources = ref([
+  { id: 1, name: 'Ryan', color: '#fdf500' },
+  { id: 2, name: 'Kate', color: '#ff4600' },
+  { id: 3, name: 'John', color: '#ff0101' },
+  { id: 4, name: 'Mark', color: '#239a21' },
+  { id: 5, name: 'Sharon', color: '#8f1ed6' },
+  { id: 6, name: 'Ashley', color: '#01adff' }
+])
+
+const localeStr = ref('en')
+
 const languages = ref([
   { name: 'Arabic', value: 'ar' },
   { name: 'Bulgarian', value: 'bg' },
@@ -76,7 +57,7 @@ const languages = ref([
   { name: 'Polski', value: 'pl' },
   { name: 'Português Brasileiro', value: 'pt-BR' },
   { name: 'Português Europeu', value: 'pt-PT' },
-  { name: 'Roman', value: 'ro' },
+  { name: 'Română', value: 'ro' },
   { name: 'Russian UA', value: 'ru-UA' },
   { name: 'Russian', value: 'ru' },
   { name: 'Slovencina', value: 'sk' },
@@ -89,12 +70,9 @@ const languages = ref([
   { name: 'Chinese', value: 'zh' }
 ])
 
-const localeStr = ref('en')
-const localeAll = locale
-
 onMounted(() => {
   getJson(
-    'https://trial.mobiscroll.com/events/?vers=5',
+    'https://trial.mobiscroll.com/timeline-events/',
     (events) => {
       myEvents.value = events
     },
@@ -104,25 +82,41 @@ onMounted(() => {
 </script>
 
 <template>
-  <MbscPage>
-    <div class="md-localization">
+  <MbscPage cssClass="mds-full-height">
+    <div class="mds-locale-cont mds-full-height mbsc-flex-col">
       <div class="mbsc-grid">
-        <div class="mbsc-row mbsc-justify-content-center">
+        <div class="mbsc-row">
           <div class="mbsc-col-sm-8">
-            <MbscDropdown v-model="localeStr" input-style="box">
-              <option v-for="l of languages" :key="l.value" :value="l.value">
-                {{ l.name }}
+            <MbscDropdown v-model="localeStr" inputStyle="box" label="Locale" labelStyle="stacked">
+              <option v-for="lang of languages" :key="lang.value" :value="lang.value">
+                {{ lang.name }}
               </option>
             </MbscDropdown>
           </div>
         </div>
       </div>
-      <MbscEventcalendar
-        :data="myEvents"
-        :resources="myResources"
-        :view="myView"
-        :locale="localeAll[localeStr]"
-      />
+      <div class="mds-overflow-hidden mbsc-flex-1-1">
+        <MbscEventcalendar
+          :data="myEvents"
+          :locale="locale[localeStr]"
+          :resources="myResources"
+          :view="myView"
+        />
+      </div>
     </div>
   </MbscPage>
 </template>
+
+<style>
+.mds-full-height {
+  height: 100%;
+}
+
+.mds-locale-cont .mbsc-col-sm-8 {
+  margin: 0 auto;
+}
+
+.mds-overflow-hidden {
+  overflow: hidden;
+}
+</style>

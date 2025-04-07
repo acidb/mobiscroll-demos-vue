@@ -13,8 +13,14 @@ setOptions({
   // theme
 })
 
-const localeStr = ref('en')
 const myEvents = ref([])
+
+const myView = {
+  calendar: { type: 'week' },
+  agenda: { type: 'day' }
+}
+
+const localeStr = ref('en')
 
 const languages = [
   { name: 'Arabic', value: 'ar' },
@@ -43,7 +49,7 @@ const languages = [
   { name: 'Polski', value: 'pl' },
   { name: 'Português Brasileiro', value: 'pt-BR' },
   { name: 'Português Europeu', value: 'pt-PT' },
-  { name: 'Roman', value: 'ro' },
+  { name: 'Română', value: 'ro' },
   { name: 'Russian UA', value: 'ru-UA' },
   { name: 'Russian', value: 'ru' },
   { name: 'Slovencina', value: 'sk' },
@@ -55,11 +61,6 @@ const languages = [
   { name: 'Vietnamese', value: 'vi' },
   { name: 'Chinese', value: 'zh' }
 ]
-
-const myView = {
-  calendar: { type: 'week' },
-  agenda: { type: 'day' }
-}
 
 onMounted(() => {
   getJson(
@@ -74,7 +75,7 @@ onMounted(() => {
 
 <template>
   <MbscPage cssClass="mds-full-height">
-    <div class="mds-agenda-locale-cont mds-full-height mbsc-flex-col">
+    <div class="mds-locale-cont mds-full-height mbsc-flex-col">
       <div class="mbsc-grid">
         <div class="mbsc-row">
           <div class="mbsc-col-sm-8">
@@ -98,7 +99,7 @@ onMounted(() => {
   height: 100%;
 }
 
-.mds-agenda-locale-cont .mbsc-col-sm-8 {
+.mds-locale-cont .mbsc-col-sm-8 {
   margin: 0 auto;
 }
 

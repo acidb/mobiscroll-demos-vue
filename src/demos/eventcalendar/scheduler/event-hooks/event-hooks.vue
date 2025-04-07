@@ -13,6 +13,11 @@ setOptions({
 })
 
 const myEvents = ref([])
+const myResources = [
+  { id: 1, name: 'Ryan', color: '#f7c4b4' },
+  { id: 2, name: 'Kate', color: '#c6f1c9' },
+  { id: 3, name: 'John', color: '#e8d0ef' }
+]
 const myView = {
   schedule: {
     type: 'day'
@@ -110,13 +115,22 @@ function handlePageLoaded() {
 function handlePageLoading() {
   // Use it to load data on demand
 }
+function handleResourceClick() {
+  // Logic for resource click
+}
+function handleResourceDoubleClick() {
+  // Logic for resource double click
+}
+function handleResourceRightClick() {
+  // Logic for resource right click
+}
 function handleSelectedDateChange() {
   // Use it to keep track of the selected date externally
 }
 
 onMounted(() => {
   getJson(
-    'https://trial.mobiscroll.com/events/?vers=5',
+    'https://trial.mobiscroll.com/resource-events/',
     (events) => {
       myEvents.value = events
     },
@@ -144,6 +158,7 @@ onMounted(() => {
     :dragToMove="true"
     :dragToResize="true"
     :externalDrop="true"
+    :resources="myResources"
     @cell-click="handleCellClick"
     @cell-double-click="handleCellDoubleClick"
     @cell-right-click="handleCellRightClick"
@@ -168,7 +183,10 @@ onMounted(() => {
     @init="handleInit"
     @page-change="handlePageChange"
     @page-loaded="handlePageLoaded"
-    @page-oading="handlePageLoading"
+    @page-loading="handlePageLoading"
+    @resource-click="handleResourceClick"
+    @resource-double-click="handleResourceDoubleClick"
+    @resource-right-click="handleResourceRightClick"
     @selected-date-change="handleSelectedDateChange"
   ></MbscEventcalendar>
 </template>
