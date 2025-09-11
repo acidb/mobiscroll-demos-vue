@@ -33,6 +33,9 @@ const dragData2 = {
   color: '#ddfcf7'
 }
 
+const dragElm1 = ref()
+const dragElm2 = ref()
+
 function handleCellClick() {
   // Logic for event click
 }
@@ -136,12 +139,12 @@ onMounted(() => {
   <div ref="dragElm1" class="event-hooks-draggable" :style="{ background: '#ffdab8' }">
     <div class="draggable-title">External drag 1</div>
     <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm1" :dragData="dragData1" />
+    <MbscDraggable :element="dragElm1" :dragData="dragData1" />
   </div>
   <div ref="dragElm2" class="event-hooks-draggable" :style="{ background: '#ddfcf7' }">
     <div class="draggable-title">External drag 2</div>
     <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm2" :dragData="dragData2" />
+    <MbscDraggable :element="dragElm2" :dragData="dragData2" />
   </div>
   <MbscEventcalendar
     :view="myView"

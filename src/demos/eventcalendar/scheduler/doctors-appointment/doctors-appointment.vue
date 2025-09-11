@@ -173,6 +173,7 @@ const myInvalid = ref([
 ])
 
 const dragElements = ref([])
+const dropCont = ref()
 const myColors = ref([])
 const contBg = ref('')
 const toastMessage = ref('')
@@ -270,10 +271,10 @@ function getHours(event) {
 
 onMounted(() => {
   for (const event of myEvents.value) {
-    // convert dates to date objects
+    // Convert dates to date objects
     event.start = event.start ? new Date(event.start) : event.start
     event.end = event.end ? new Date(event.end) : event.end
-    // mark past events as fixed by setting the event.editable property to false
+    // Mark past events as fixed by setting the event.editable property to false
     event.editable = !!(event.start && today < event.start)
   }
 })
@@ -309,7 +310,7 @@ onMounted(() => {
         :style="{ background: contBg }"
       >
         <MbscDropcontainer
-          :element="$refs.dropCont"
+          :element="dropCont"
           @item-drop="handleItemDrop"
           @item-drag-enter="handleItemDragEnter"
           @item-drag-leave="handleItemDragLeave"

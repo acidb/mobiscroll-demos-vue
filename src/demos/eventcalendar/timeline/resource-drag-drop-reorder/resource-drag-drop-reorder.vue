@@ -448,7 +448,6 @@ function saveReorder() {
 
 function cancelReorder() {
   isReorder.value = false
-  // setReorder(false)
   myResources.value = [...myResources.value]
   myView.value = {
     timeline: {

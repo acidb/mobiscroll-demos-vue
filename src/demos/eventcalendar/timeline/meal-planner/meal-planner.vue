@@ -125,13 +125,13 @@ function saveEvent() {
   tempMeal.value.allDay = true
   tempMeal.value.resource = type.value
   if (isEdit.value) {
-    // update the event in the list
+    // Update the event in the list
     myMeals.value = [...myMeals.value]
   } else {
-    // add the new event to the list
+    // Add the new event to the list
     myMeals.value = [...myMeals.value, tempMeal.value]
   }
-  // close the popup
+  // Close the popup
   isPopupOpen.value = false
 }
 
@@ -156,16 +156,16 @@ function handleEventClick(args) {
   const event = args.event
   isEdit.value = true
   tempMeal.value = event
-  // fill popup form with event data
+  // Fill popup form with event data
   loadPopupForm(event)
-  // set popup options
+  // Set popup options
   popupButtons.value = popupEditButtons
   headerText.value =
     '<div>New meal</div><div class="md-meal-type">' +
     formatDate('DDDD, DD MMMM YYYY', new Date(event.start)) +
     '</div>'
   type.value = event.resource
-  // open the popup
+  // Open the popup
   isPopupOpen.value = true
 }
 
@@ -174,9 +174,9 @@ function handleEventCreated(args) {
   const resource = args.resourceObj
   isEdit.value = false
   tempMeal.value = event
-  // fill popup form with event data
+  // Fill popup form with event data
   loadPopupForm(event)
-  // set popup options
+  // Set popup options
   popupButtons.value = popupAddButtons
   headerText.value =
     '<div>' +
@@ -185,7 +185,7 @@ function handleEventCreated(args) {
     formatDate('DDDD, DD MMMM YYYY', new Date(event.start)) +
     '</div>'
   type.value = event.resource
-  // open the popup
+  // Open the popup
   isPopupOpen.value = true
 }
 

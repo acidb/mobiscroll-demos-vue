@@ -40,6 +40,9 @@ const dragData2 = {
   color: '#ddfcf7'
 }
 
+const dragElm1 = ref()
+const dragElm2 = ref()
+
 function handleCellClick() {
   // Logic for event click
 }
@@ -48,6 +51,12 @@ function handleCellDoubleClick() {
 }
 function handleCellRightClick() {
   // Logic for cell right click
+}
+function handleCellHoverIn() {
+  // Logic for cell hover in
+}
+function handleCellHoverOut() {
+  // Logic for cell hover out
 }
 function handleDestroy() {
   // Logic for destroying the event calendar
@@ -124,6 +133,12 @@ function handleResourceDoubleClick() {
 function handleResourceRightClick() {
   // Logic for resource right click
 }
+function handleResourceHoverIn() {
+  // Logic for resource hover in
+}
+function handleResourceHoverOut() {
+  // Logic for resource hover out
+}
 function handleSelectedDateChange() {
   // Use it to keep track of the selected date externally
 }
@@ -143,12 +158,12 @@ onMounted(() => {
   <div ref="dragElm1" class="event-hooks-draggable" :style="{ background: '#ffdab8' }">
     <div class="draggable-title">External drag 1</div>
     <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm1" :dragData="dragData1" />
+    <MbscDraggable :element="dragElm1" :dragData="dragData1" />
   </div>
   <div ref="dragElm2" class="event-hooks-draggable" :style="{ background: '#ddfcf7' }">
     <div class="draggable-title">External drag 2</div>
     <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm2" :dragData="dragData2" />
+    <MbscDraggable :element="dragElm2" :dragData="dragData2" />
   </div>
   <MbscEventcalendar
     :view="myView"
@@ -162,6 +177,8 @@ onMounted(() => {
     @cell-click="handleCellClick"
     @cell-double-click="handleCellDoubleClick"
     @cell-right-click="handleCellRightClick"
+    @cell-hover-in="handleCellHoverIn"
+    @cell-hover-out="handleCellHoverOut"
     @destroy="handleDestroy"
     @event-click="handleEventClick"
     @event-create="handleEventCreate"
@@ -187,6 +204,8 @@ onMounted(() => {
     @resource-click="handleResourceClick"
     @resource-double-click="handleResourceDoubleClick"
     @resource-right-click="handleResourceRightClick"
+    @resource-hover-in="handleResourceHoverIn"
+    @resource-hover-out="handleResourceHoverOut"
     @selected-date-change="handleSelectedDateChange"
   ></MbscEventcalendar>
 </template>

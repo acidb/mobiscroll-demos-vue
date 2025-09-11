@@ -1,25 +1,29 @@
 <script setup>
 import {
+  dayjsTimezone,
   MbscCalendarNav,
   MbscCalendarNext,
   MbscCalendarPrev,
   MbscCalendarToday,
   MbscEventcalendar,
   MbscSelect,
-  momentTimezone,
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
-import * as moment from 'moment-timezone'
+import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 import { ref } from 'vue'
 
-momentTimezone.moment = moment
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjsTimezone.dayjs = dayjs
 
 setOptions({
   // locale,
   // theme
 })
 
-const timezone = ref('utc')
+const myTimezone = ref('utc')
 const timezones = [
   {
     text: 'America/Los Angeles',
@@ -110,15 +114,15 @@ const myView = {
 }
 
 function handleChange(ev) {
-  timezone.value = ev.value
+  myTimezone.value = ev.value
 }
 </script>
 
 <template>
   <MbscEventcalendar
     dataTimezone="utc"
-    :displayTimezone="timezone"
-    :timezonePlugin="momentTimezone"
+    :displayTimezone="myTimezone"
+    :timezonePlugin="dayjsTimezone"
     :view="myView"
     :data="myEvents"
     :dragToCreate="true"
@@ -133,7 +137,7 @@ function handleChange(ev) {
         <MbscCalendarNext />
         <MbscSelect
           inputStyle="box"
-          v-model="timezone"
+          v-model="myTimezone"
           :data="timezones"
           :touchUi="false"
           @change="handleChange"

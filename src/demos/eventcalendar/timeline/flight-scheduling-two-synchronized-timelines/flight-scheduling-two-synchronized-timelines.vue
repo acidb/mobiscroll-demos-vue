@@ -472,10 +472,6 @@ function handlePageLoading(args) {
   }
 }
 
-// function handleEventDelete(args) {
-//   reservations.value = reservations.value.filter((item) => item.id !== args.event.resource)
-// }
-
 function handleSelectedDateChange(args) {
   mySelectedDate.value = args.date
 }

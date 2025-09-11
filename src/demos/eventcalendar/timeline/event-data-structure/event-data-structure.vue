@@ -39,14 +39,14 @@ const myView = { timeline: { type: 'week' } }
 
 function addEvent() {
   const newEvent = {
-    // base properties
+    // Base properties
     title: 'Product planning',
     start: new Date(2018, 11, 21, 13),
     end: new Date(2018, 11, 21, 14),
     resource: 4,
     bufferBefore: 20,
     bufferAfter: 30,
-    // add any property you'd like
+    // Add any property you'd like
     busy: true,
     description: 'Weekly meeting with team',
     location: 'Office'

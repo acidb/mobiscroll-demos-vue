@@ -44,6 +44,15 @@ const dragData2 = {
   color: '#ddfcf7'
 }
 
+const dragData3 = {
+  name: 'External resource',
+  color: '#d19494'
+}
+
+const dragElm1 = ref()
+const dragElm2 = ref()
+const dragElm3 = ref()
+
 function handleCellClick() {
   // Logic for event click
 }
@@ -52,6 +61,12 @@ function handleCellDoubleClick() {
 }
 function handleCellRightClick() {
   // Logic for cell right click
+}
+function handleCellHoverIn() {
+  // Logic for cell hover in
+}
+function handleCellHoverOut() {
+  // Logic for cell hover out
 }
 function handleDestroy() {
   // Logic for destroying the event calendar
@@ -134,8 +149,32 @@ function handleResourceDragStart() {
 function handleResourceOrderUpdate() {
   // Logic for resource update
 }
+function handleResourceCreate() {
+  // Logic for resource create
+}
+function handleResourceCreated() {
+  // Logic for resource created
+}
+function handleResourceDelete() {
+  // Logic for resource delete
+}
+function handleResourceDeleted() {
+  // Logic for resource deleted
+}
+function handleResourceDragEnter() {
+  // Logic for resource update
+}
+function handleResourceDragLeave() {
+  // Logic for resource update
+}
 function handleResourceRightClick() {
   // Logic for resource right click
+}
+function handleResourceHoverIn() {
+  // Logic for resource hover in
+}
+function handleResourceHoverOut() {
+  // Logic for resource hover out
 }
 function handleSelectedDateChange() {
   // Use it to keep track of the selected date externally
@@ -156,12 +195,17 @@ onMounted(() => {
   <div ref="dragElm1" class="event-hooks-draggable" :style="{ background: '#ffdab8' }">
     <div class="draggable-title">External drag 1</div>
     <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm1" :dragData="dragData1" />
+    <MbscDraggable :element="dragElm1" :dragData="dragData1" />
   </div>
   <div ref="dragElm2" class="event-hooks-draggable" :style="{ background: '#ddfcf7' }">
     <div class="draggable-title">External drag 2</div>
     <div class="draggable-text">Drag me to calendar</div>
-    <MbscDraggable :element="$refs.dragElm2" :dragData="dragData2" />
+    <MbscDraggable :element="dragElm2" :dragData="dragData2" />
+  </div>
+  <div ref="dragElm3" class="event-hooks-draggable" :style="{ background: '#d19494' }">
+    <div class="draggable-title">External resource</div>
+    <div class="draggable-text">Drag me to calendar</div>
+    <MbscDraggable :element="dragElm3" :dragData="dragData3" type="resource" />
   </div>
   <MbscEventcalendar
     :view="myView"
@@ -172,9 +216,12 @@ onMounted(() => {
     :dragToMove="true"
     :dragToResize="true"
     :externalDrop="true"
+    :externalResourceDrop="true"
     @cell-click="handleCellClick"
     @cell-double-click="handleCellDoubleClick"
     @cell-right-click="handleCellRightClick"
+    @cell-hover-in="handleCellHoverIn"
+    @cell-hover-out="handleCellHoverOut"
     @destroy="handleDestroy"
     @event-click="handleEventClick"
     @event-create="handleEventCreate"
@@ -202,7 +249,15 @@ onMounted(() => {
     @resource-drag-end="handleResourceDragEnd"
     @resource-drag-start="handleResourceDragStart"
     @resource-order-update="handleResourceOrderUpdate"
+    @resource-create="handleResourceCreate"
+    @resource-created="handleResourceCreated"
+    @resource-delete="handleResourceDelete"
+    @resource-deleted="handleResourceDeleted"
+    @resource-drag-enter="handleResourceDragEnter"
+    @resource-drag-leave="handleResourceDragLeave"
     @resource-right-click="handleResourceRightClick"
+    @resource-hover-in="handleResourceHoverIn"
+    @resource-hover-out="handleResourceHoverOut"
     @selected-date-change="handleSelectedDateChange"
   />
 </template>

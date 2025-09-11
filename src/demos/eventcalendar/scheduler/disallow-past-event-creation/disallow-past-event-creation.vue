@@ -56,7 +56,7 @@ function handleEventCreate(args) {
   const oldEvent = args.originEvent
   const start = oldEvent && oldEvent.start ? oldEvent.start : null
 
-  // handle recurring events
+  // Handle recurring events
   if (start && start < today) {
     toastMessage.value = "Can't move past event"
     isToastOpen.value = true
@@ -71,7 +71,7 @@ function handleEventUpdate(args) {
   const occurrenceStart =
     oldEventOccurrence && oldEventOccurrence.start ? oldEventOccurrence.start : null
 
-  // handle recurring events
+  // Handle recurring events
   if ((start && start < today) || (occurrenceStart && occurrenceStart < today)) {
     return false
   }
@@ -86,10 +86,10 @@ onMounted(() => {
     'https://trial.mobiscroll.com/events/?vers=5',
     (events) => {
       for (const event of events) {
-        // convert dates to date objects
+        // Convert dates to date objects
         event.start = event.start ? new Date(event.start) : event.start
         event.end = event.end ? new Date(event.end) : event.end
-        // mark past events as fixed by setting the event.editable property to false
+        // Mark past events as fixed by setting the event.editable property to false
         event.editable = event.start && today < event.start
       }
       myEvents.value = events

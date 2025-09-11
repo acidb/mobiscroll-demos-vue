@@ -22,8 +22,6 @@ const myResponsive = {
     // Custom breakpoint
     breakpoint: 800,
     display: 'anchored'
-    //
-    // anchor: myAnchor
   }
 }
 

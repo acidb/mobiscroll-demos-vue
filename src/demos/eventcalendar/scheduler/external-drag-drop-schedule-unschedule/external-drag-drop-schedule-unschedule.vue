@@ -50,6 +50,7 @@ const myTasks = ref([
 ])
 
 const dragElements = ref([])
+const dropCont = ref()
 const myEvents = ref([])
 const toastMessage = ref(null)
 const isToastOpen = ref(false)
@@ -107,7 +108,7 @@ onMounted(() => {
         />
       </div>
       <div ref="dropCont" class="mbsc-col-sm-3 external-drop-cont">
-        <MbscDropcontainer :element="$refs.dropCont" @item-drop="handleItemDrop($event)">
+        <MbscDropcontainer :element="dropCont" @item-drop="handleItemDrop($event)">
           <div class="mbsc-form-group-title">Available tasks</div>
           <div v-for="(task, i) in myTasks" :key="task.id">
             <div ref="dragElements" class="external-drop-task" :style="{ background: task.color }">

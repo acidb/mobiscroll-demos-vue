@@ -1,9 +1,13 @@
 <script setup>
-import { MbscDatepicker, momentTimezone, setOptions /* localeImport */ } from '@mobiscroll/vue'
-import * as moment from 'moment-timezone'
+import { dayjsTimezone, MbscDatepicker, setOptions /* localeImport */ } from '@mobiscroll/vue'
+import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 import { ref } from 'vue'
 
-momentTimezone.moment = moment
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjsTimezone.dayjs = dayjs
 
 setOptions({
   // locale,
@@ -16,7 +20,7 @@ const selected = ref()
 <template>
   <MbscDatepicker
     :controls="['calendar', 'time']"
-    :timezonePlugin="momentTimezone"
+    :timezonePlugin="dayjsTimezone"
     select="range"
     v-model="selected"
     dataTimezone="utc"

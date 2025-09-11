@@ -1927,7 +1927,7 @@ function getShiftsNrs(date, slotId) {
   const shiftList = []
 
   for (const shift of shifts.value) {
-    // get slot id from resource id
+    // Get slot id from resource id
     const resourceNr = +shift.resource.toString().charAt(0)
     if (shift.slot === slotId && date === formatMyDate(shift.start)) {
       shiftList[resourceNr - 1] = (shiftList[resourceNr - 1] || 0) + 1

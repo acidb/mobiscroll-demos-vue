@@ -338,19 +338,19 @@ function undoEvents() {
 
 function detectAction(key) {
   switch (key) {
-    case 'delete': // delete
+    case 'delete': // Delete
       deleteEvents()
       break
-    case 'c': // copy
+    case 'c': // Copy
       copyEvents()
       break
-    case 'x': // cut
+    case 'x': // Cut
       cutEvents()
       break
-    case 'z': // undo
+    case 'z': // Undo
       undoEvents()
       break
-    case 'v': // paste
+    case 'v': // Paste
       pasteEvents()
       break
   }
