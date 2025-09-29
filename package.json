@@ -14,7 +14,9 @@
     "@mobiscroll/print": "file:src/addons/print",
     "@mobiscroll/vue": "^5.35.0",
     "dayjs": "^1.11.18",
+    "dragula": "^3.7.3",
     "moment-timezone": "^0.5.43",
+    "sortablejs": "^1.15.6",
     "vue": "^3.5.12",
     "vue-router": "^4.2.5"
   },
