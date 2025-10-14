@@ -11,7 +11,7 @@ import {
 } from '@mobiscroll/vue'
 import dragula from 'dragula'
 import Sortable from 'sortablejs'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import 'dragula/dist/dragula.css'
 
 setOptions({
@@ -22,7 +22,9 @@ setOptions({
 const dragElements = ref([])
 const dropCont = ref()
 const sortableCont = ref([])
+const sortableInstance = ref()
 const dragulaCont = ref()
+const drake = ref()
 const myEvents = ref([])
 const toastMessage = ref(null)
 const isToastOpen = ref(false)
@@ -165,19 +167,43 @@ onMounted(() => {
     'jsonp'
   )
   if (sortableCont.value) {
-    const sortableInstance = new Sortable(sortableCont.value, {
+    sortableInstance.value = new Sortable(sortableCont.value, {
       animation: 150,
       forceFallback: true
     })
 
-    sortableJsDraggable.init(sortableInstance, {
-      cloneSelector: '.sortable-drag'
+    sortableJsDraggable.init(sortableInstance.value, {
+      cloneSelector: '.sortable-drag',
+      externalDrop: true,
+      onExternalDrop: (a) => {
+        const dragData = a.dragData
+        const newTasks = [...mySortableTasks.value]
+        newTasks.splice(a.position, 0, dragData)
+        mySortableTasks.value = newTasks
+      }
     })
   }
 
   if (dragulaCont.value) {
-    const drake = dragula([dragulaCont.value])
-    dragulaDraggable.init(drake)
+    drake.value = dragula([dragulaCont.value])
+    dragulaDraggable.init(drake.value, {
+      externalDrop: true,
+      onExternalDrop: (a) => {
+        const dragData = a.dragData
+        const newTasks = [...myDraggableTasks.value]
+        newTasks.splice(a.position, 0, dragData)
+        myDraggableTasks.value = newTasks
+      }
+    })
+  }
+})
+
+onUnmounted(() => {
+  if (sortableInstance.value) {
+    sortableInstance.value.destroy()
+  }
+  if (drake.value) {
+    drake.value.destroy()
   }
 })
 </script>
@@ -193,8 +219,8 @@ onMounted(() => {
           :dragToCreate="true"
           :externalDrop="true"
           :externalDrag="true"
-          @event-create="handleEventCreated"
-          @event-delete="handleEventDeleted"
+          @event-created="handleEventCreated"
+          @event-deleted="handleEventDeleted"
         />
       </div>
       <div class="mbsc-col-sm-3 mds-drag-drop-sort-container-wrapper mds-full-height">
