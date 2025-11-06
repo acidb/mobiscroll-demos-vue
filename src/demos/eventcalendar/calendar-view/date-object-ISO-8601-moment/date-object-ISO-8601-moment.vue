@@ -98,6 +98,7 @@ function addMoment() {
                 end: new Date(2020, 4, 19, 11, 45)
               </MbscButton>
             </div>
+            <!-- dragOptions -->
             <MbscEventcalendar :data="dateObjData" :view="myView" :selectedDate="selectedObj" />
           </div>
         </div>
@@ -110,6 +111,7 @@ function addMoment() {
                 end: 2020-05-20T13:00:00
               </MbscButton>
             </div>
+            <!-- dragOptions -->
             <MbscEventcalendar :data="isoData" :view="myView" :selectedDate="selectedISO" />
           </div>
         </div>
@@ -122,6 +124,7 @@ function addMoment() {
                 end: moment([2020, 4, 21, 14])
               </MbscButton>
             </div>
+            <!-- dragOptions -->
             <MbscEventcalendar :data="momentData" :view="myView" :selectedDate="selectedMoment" />
           </div>
         </div>
