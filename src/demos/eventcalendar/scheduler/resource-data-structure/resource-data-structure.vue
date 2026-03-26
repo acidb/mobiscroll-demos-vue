@@ -1,6 +1,7 @@
 <script setup>
 import { MbscEventcalendar, setOptions /* localeImport */ } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -42,27 +43,27 @@ const myResources = ref([
 
 const myData = ref([
   {
-    start: 'dyndatetime(y,m,d,15)',
-    end: 'dyndatetime(y,m,d,18)',
+    start: dyndatetime('y,m,d,15'),
+    end: dyndatetime('y,m,d,18'),
     title: 'General orientation',
     resource: 1
   },
   {
-    start: 'dyndatetime(y,m,d,9)',
-    end: 'dyndatetime(y,m,d,11)',
+    start: dyndatetime('y,m,d,9'),
+    end: dyndatetime('y,m,d,11'),
     text: 'Stakeholder mtg.',
     resource: 2
   },
   {
-    start: 'dyndatetime(y,m,d,13,30)',
-    end: 'dyndatetime(y,m,d,15)',
+    start: dyndatetime('y,m,d,13,30'),
+    end: dyndatetime('y,m,d,15'),
     text: "Lunch @ Butcher's",
     resource: 3
   }
 ])
 
 const myView = {
-  schedule: { type: 'day' }
+  scheduler: { type: 'day' }
 }
 </script>
 

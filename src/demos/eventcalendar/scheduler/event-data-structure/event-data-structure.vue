@@ -28,7 +28,7 @@ const myEvents = ref([
   }
 ])
 
-const myView = { schedule: { type: 'day' } }
+const myView = { scheduler: { type: 'day' } }
 
 function addEvent() {
   const newEvent = {

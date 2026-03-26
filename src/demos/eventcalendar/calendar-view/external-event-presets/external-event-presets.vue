@@ -11,6 +11,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -21,43 +22,43 @@ const myTasks = ref([
   {
     title: 'Small wrap',
     color: '#637e57',
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+1)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+1'),
     length: '2 days'
   },
   {
     title: 'Full-size wrap',
     color: '#50789d',
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     length: '3 days'
   },
   {
     title: 'Mid-size wrap',
     color: '#6c5d45',
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     length: '3 days'
   },
   {
     title: 'Roadster wrap',
     color: '#9da721',
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     length: '3 days'
   },
   {
     title: 'SUV wrap',
     color: '#cd6957',
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+3)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+3'),
     length: '4 days'
   },
   {
     title: 'Hypercar wrap',
     color: '#7a5886',
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+4)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+4'),
     length: '5 days'
   }
 ])

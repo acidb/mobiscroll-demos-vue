@@ -28,7 +28,7 @@ const toastMessage = ref('')
 const isToastOpen = ref(false)
 const calendarView = ref('week')
 const myView = ref({
-  schedule: { type: 'week' }
+  scheduler: { type: 'week' }
 })
 
 function onError(resp) {
@@ -85,12 +85,12 @@ function handleViewChange() {
       break
     case 'week':
       myView.value = {
-        schedule: { type: 'week' }
+        scheduler: { type: 'week' }
       }
       break
     case 'day':
       myView.value = {
-        schedule: { type: 'day' }
+        scheduler: { type: 'day' }
       }
       break
     case 'agenda':

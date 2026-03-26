@@ -12,6 +12,7 @@ import {
 import dragula from 'dragula'
 import Sortable from 'sortablejs'
 import { onMounted, onUnmounted, ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 import 'dragula/dist/dragula.css'
 
 setOptions({
@@ -34,29 +35,29 @@ const myDraggableTasks = ref([
     id: 1,
     title: 'Task 1',
     color: '#cf4343',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,9,30)'
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,9,30')
   },
   {
     id: 2,
     title: 'Task 2',
     color: '#cf4343',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,10)'
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,10')
   },
   {
     id: 3,
     title: 'Task 3',
     color: '#cf4343',
-    start: 'dyndatetime(y,m,d,10)',
-    end: 'dyndatetime(y,m,d,14)'
+    start: dyndatetime('y,m,d,10'),
+    end: dyndatetime('y,m,d,14')
   },
   {
     id: 4,
     title: 'Task 4',
     color: '#cf4343',
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d,18)'
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d,18')
   }
 ])
 
@@ -65,29 +66,29 @@ const mySortableTasks = ref([
     id: 'sortable-1',
     title: 'Task 5',
     color: '#e49516',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,9,30)'
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,9,30')
   },
   {
     id: 'sortable-2',
     title: 'Task 6',
     color: '#e49516',
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d,15)'
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d,15')
   },
   {
     id: 'sortable-3',
     title: 'Task 7',
     color: '#e49516',
-    start: 'dyndatetime(y,m,d,8,30)',
-    end: 'dyndatetime(y,m,d,11)'
+    start: dyndatetime('y,m,d,8,30'),
+    end: dyndatetime('y,m,d,11')
   },
   {
     id: 'sortable-4',
     title: 'Task 8',
     color: '#e49516',
-    start: 'dyndatetime(y,m,d,16)',
-    end: 'dyndatetime(y,m,d,17)'
+    start: dyndatetime('y,m,d,16'),
+    end: dyndatetime('y,m,d,17')
   }
 ])
 
@@ -96,34 +97,34 @@ const myDragulaTasks = ref([
     id: 'dragula-1',
     title: 'Task 9',
     color: '#1ca11a',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,9,30)'
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,9,30')
   },
   {
     id: 'dragula-2',
     title: 'Task 10',
     color: '#1ca11a',
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d,15)'
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d,15')
   },
   {
     id: 'dragula-3',
     title: 'Task 11',
     color: '#1ca11a',
-    start: 'dyndatetime(y,m,d,8,30)',
-    end: 'dyndatetime(y,m,d,11)'
+    start: dyndatetime('y,m,d,8,30'),
+    end: dyndatetime('y,m,d,11')
   },
   {
     id: 'dragula-4',
     title: 'Task 12',
     color: '#1ca11a',
-    start: 'dyndatetime(y,m,d,16)',
-    end: 'dyndatetime(y,m,d,17)'
+    start: dyndatetime('y,m,d,16'),
+    end: dyndatetime('y,m,d,17')
   }
 ])
 
 const myView = {
-  schedule: { type: 'week' }
+  scheduler: { type: 'week' }
 }
 
 function handleEventCreated(args) {

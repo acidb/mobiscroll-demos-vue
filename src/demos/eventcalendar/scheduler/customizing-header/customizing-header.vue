@@ -20,7 +20,7 @@ const myEvents = ref([])
 const currentDate = ref(new Date())
 const view = ref('schedule')
 const calView = ref({
-  schedule: { type: 'week' }
+  scheduler: { type: 'week' }
 })
 
 function getFirstDayOfWeek(d, prev) {
@@ -53,7 +53,7 @@ function changeView() {
       break
     case 'schedule':
       calView.value = {
-        schedule: { type: 'week' }
+        scheduler: { type: 'week' }
       }
       break
   }

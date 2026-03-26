@@ -105,7 +105,7 @@ const myEvents = [
 ]
 
 const myView = {
-  schedule: {
+  scheduler: {
     allDay: false,
     maxEventStack: 2,
     type: 'week'

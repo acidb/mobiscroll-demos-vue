@@ -15,6 +15,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { ref, watch } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -23,8 +24,8 @@ setOptions({
 
 const myEvents = ref([
   {
-    start: 'dyndatetime(y,m,d-1)',
-    end: 'dyndatetime(y,m,d+3)',
+    start: dyndatetime('y,m,d-1'),
+    end: dyndatetime('y,m,d+3'),
     title: 'Tour #013 - Miami to Seattle',
     resource: 1,
     color: '#FF9933',
@@ -32,8 +33,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+1)',
-    end: 'dyndatetime(y,m,d+3)',
+    start: dyndatetime('y,m,d+1'),
+    end: dyndatetime('y,m,d+3'),
     title: 'Tour #014 - Denver to Boston',
     resource: 2,
     color: '#33FFA6',
@@ -41,8 +42,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+3)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+3'),
     title: 'Tour #015 - Orlando to Austin',
     resource: 3,
     color: '#9933FF',
@@ -50,8 +51,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+1)',
-    end: 'dyndatetime(y,m,d+4)',
+    start: dyndatetime('y,m,d+1'),
+    end: dyndatetime('y,m,d+4'),
     title: 'Tour #016 - Detroit to Baltimore',
     resource: 4,
     color: '#33A6FF',
@@ -59,8 +60,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+2)',
-    end: 'dyndatetime(y,m,d+5)',
+    start: dyndatetime('y,m,d+2'),
+    end: dyndatetime('y,m,d+5'),
     title: 'Tour #017 - Las Vegas to Portland',
     resource: 5,
     color: '#FF5733',
@@ -68,8 +69,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+2)',
-    end: 'dyndatetime(y,m,d+5)',
+    start: dyndatetime('y,m,d+2'),
+    end: dyndatetime('y,m,d+5'),
     title: 'Tour #018 - Atlanta to Kansas City',
     resource: 6,
     color: '#33FF99',
@@ -77,8 +78,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-4,11)',
-    end: 'dyndatetime(y,m,d)',
+    start: dyndatetime('y,m,d-4,11'),
+    end: dyndatetime('y,m,d'),
     title: 'Tour #018 - Dallas to Atlanta',
     resource: 6,
     color: '#33FF99',
@@ -86,8 +87,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+4)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+4'),
     title: 'Tour #019 - Charlotte to Indianapolis',
     resource: 7,
     color: '#FF5733',
@@ -95,8 +96,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     title: 'Tour #005 - Dallas to San Francisco',
     resource: 7,
     color: '#FF5733',
@@ -104,8 +105,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+4)',
-    end: 'dyndatetime(y,m,d+6)',
+    start: dyndatetime('y,m,d+4'),
+    end: dyndatetime('y,m,d+6'),
     title: 'Tour #001 - New York to Los Angeles',
     resource: 7,
     color: '#FF5733',
@@ -113,8 +114,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     title: 'Tour #009 - San Diego to Dallas',
     resource: 7,
     color: '#FF5733',
@@ -122,8 +123,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+4)',
-    end: 'dyndatetime(y,m,d+6)',
+    start: dyndatetime('y,m,d+4'),
+    end: dyndatetime('y,m,d+6'),
     title: 'Tour #006 - Los Angeles to Chicago',
     resource: 8,
     color: '#FF33A6',
@@ -131,8 +132,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-2)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d-2'),
+    end: dyndatetime('y,m,d+2'),
     title: 'Tour #010 - San Francisco to Los Angeles',
     resource: 8,
     color: '#FF33A6',
@@ -140,8 +141,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+3)',
-    end: 'dyndatetime(y,m,d+6)',
+    start: dyndatetime('y,m,d+3'),
+    end: dyndatetime('y,m,d+6'),
     title: 'Tour #007 - Houston to New York',
     resource: 9,
     color: '#33FF57',
@@ -149,8 +150,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     title: 'Tour #003 - Philadelphia to Phoenix',
     resource: 9,
     color: '#33FF57',
@@ -158,8 +159,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-4)',
-    end: 'dyndatetime(y,m,d-1)',
+    start: dyndatetime('y,m,d-4'),
+    end: dyndatetime('y,m,d-1'),
     title: 'Tour #028 - Trenton to Philadelphia',
     resource: 9,
     color: '#33FF57',
@@ -167,8 +168,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-4)',
-    end: 'dyndatetime(y,m,d+1)',
+    start: dyndatetime('y,m,d-4'),
+    end: dyndatetime('y,m,d+1'),
     title: 'Tour #004 - San Antonio to San Diego',
     resource: 10,
     color: '#3357FF',
@@ -177,8 +178,8 @@ const myEvents = ref([
   },
 
   {
-    start: 'dyndatetime(y,m,d+3)',
-    end: 'dyndatetime(y,m,d+6)',
+    start: dyndatetime('y,m,d+3'),
+    end: dyndatetime('y,m,d+6'),
     title: 'Tour #022 - Cleveland to Cincinnati',
     resource: 10,
     color: '#3357FF',
@@ -186,8 +187,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-4)',
-    end: 'dyndatetime(y,m,d+1)',
+    start: dyndatetime('y,m,d-4'),
+    end: dyndatetime('y,m,d+1'),
     title: 'Tour #023 - Boston to Philadelphia',
     resource: 11,
     color: '#FF9933',
@@ -195,8 +196,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d'),
+    end: dyndatetime('y,m,d+2'),
     title: 'Tour #024 - Las Vegas to San Diego',
     resource: 12,
     color: '#33FF57',
@@ -204,8 +205,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-3)',
-    end: 'dyndatetime(y,m,d)',
+    start: dyndatetime('y,m,d-3'),
+    end: dyndatetime('y,m,d'),
     title: 'Tour #025 - Miami to Charlotte',
     resource: 13,
     color: '#9933FF',
@@ -213,8 +214,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d+2)',
-    end: 'dyndatetime(y,m,d+5)',
+    start: dyndatetime('y,m,d+2'),
+    end: dyndatetime('y,m,d+5'),
     title: 'Tour #026 - Seattle to Portland',
     resource: 14,
     color: '#33A6FF',
@@ -222,8 +223,8 @@ const myEvents = ref([
     overlap: false
   },
   {
-    start: 'dyndatetime(y,m,d-1)',
-    end: 'dyndatetime(y,m,d+2)',
+    start: dyndatetime('y,m,d-1'),
+    end: dyndatetime('y,m,d+2'),
     title: 'Tour #027 - Atlanta to Orlando',
     resource: 15,
     color: '#FF5733',
@@ -519,7 +520,7 @@ watch(snackbarKey, (newVal) => {
       </div>
     </template>
 
-    <template #scheduleEventContent="event">
+    <template #timelineEventContent="event">
       <div>
         <div>{{ event.title }}</div>
         <div class="mds-popup-sort-event-attr">

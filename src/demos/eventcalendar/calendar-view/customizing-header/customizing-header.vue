@@ -53,7 +53,7 @@ function changeView() {
       break
     case 'schedule':
       calView.value = {
-        schedule: { type: 'week' }
+        scheduler: { type: 'week' }
       }
       break
   }

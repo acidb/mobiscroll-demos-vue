@@ -1,6 +1,7 @@
 <script setup>
 import { formatDate, MbscEventcalendar, setOptions /* localeImport */ } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -33,106 +34,106 @@ const staff = ref([
 
 const shifts = ref([
   {
-    start: 'dyndatetime(y,m,d-2,7)',
-    end: 'dyndatetime(y,m,d-2,13)',
+    start: dyndatetime('y,m,d-2,7'),
+    end: dyndatetime('y,m,d-2,13'),
     title: '07:00 - 13:00',
     resource: 2,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d-2,7)',
-    end: 'dyndatetime(y,m,d-2,13)',
+    start: dyndatetime('y,m,d-2,7'),
+    end: dyndatetime('y,m,d-2,13'),
     title: '07:00 - 13:00',
     resource: 3,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d-2,7)',
-    end: 'dyndatetime(y,m,d-2,13)',
+    start: dyndatetime('y,m,d-2,7'),
+    end: dyndatetime('y,m,d-2,13'),
     title: '07:00 - 13:00',
     resource: 6,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d-1,7)',
-    end: 'dyndatetime(y,m,d-1,13)',
+    start: dyndatetime('y,m,d-1,7'),
+    end: dyndatetime('y,m,d-1,13'),
     title: '07:00 - 13:00',
     resource: 1,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d-1,7)',
-    end: 'dyndatetime(y,m,d-1,13)',
+    start: dyndatetime('y,m,d-1,7'),
+    end: dyndatetime('y,m,d-1,13'),
     title: '07:00 - 13:00',
     resource: 2,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d-1,12)',
-    end: 'dyndatetime(y,m,d-1,18)',
+    start: dyndatetime('y,m,d-1,12'),
+    end: dyndatetime('y,m,d-1,18'),
     title: '12:00 - 18:00',
     resource: 3,
     slot: 2
   },
   {
-    start: 'dyndatetime(y,m,d,7)',
-    end: 'dyndatetime(y,m,d,13)',
+    start: dyndatetime('y,m,d,7'),
+    end: dyndatetime('y,m,d,13'),
     title: '07:00 - 13:00',
     resource: 1,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d,7)',
-    end: 'dyndatetime(y,m,d,13)',
+    start: dyndatetime('y,m,d,7'),
+    end: dyndatetime('y,m,d,13'),
     title: '07:00 - 13:00',
     resource: 3,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d,18)',
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d,18'),
     title: '12:00 - 18:00',
     resource: 2,
     slot: 2
   },
   {
-    start: 'dyndatetime(y,m,d+1,12)',
-    end: 'dyndatetime(y,m,d+1,18)',
+    start: dyndatetime('y,m,d+1,12'),
+    end: dyndatetime('y,m,d+1,18'),
     title: '12:00 - 18:00',
     resource: 2,
     slot: 2
   },
   {
-    start: 'dyndatetime(y,m,d+2,7)',
-    end: 'dyndatetime(y,m,d+2,13)',
+    start: dyndatetime('y,m,d+2,7'),
+    end: dyndatetime('y,m,d+2,13'),
     title: '07:00 - 13:00',
     resource: 1,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d+2,12)',
-    end: 'dyndatetime(y,m,d+2,18)',
+    start: dyndatetime('y,m,d+2,12'),
+    end: dyndatetime('y,m,d+2,18'),
     title: '12:00 - 18:00',
     resource: 2,
     slot: 2
   },
   {
-    start: 'dyndatetime(y,m,d+2,12)',
-    end: 'dyndatetime(y,m,d+2,18)',
+    start: dyndatetime('y,m,d+2,12'),
+    end: dyndatetime('y,m,d+2,18'),
     title: '12:00 - 18:00',
     resource: 3,
     slot: 2
   },
   {
-    start: 'dyndatetime(y,m,d+3,7)',
-    end: 'dyndatetime(y,m,d+3,13)',
+    start: dyndatetime('y,m,d+3,7'),
+    end: dyndatetime('y,m,d+3,13'),
     title: '07:00 - 13:00',
     resource: 1,
     slot: 1
   },
   {
-    start: 'dyndatetime(y,m,d+3,12)',
-    end: 'dyndatetime(y,m,d+3,18)',
+    start: dyndatetime('y,m,d+3,12'),
+    end: dyndatetime('y,m,d+3,18'),
     title: '12:00 - 18:00',
     resource: 3,
     slot: 2
@@ -172,7 +173,7 @@ const mySlots = [
 const myView = {
   timeline: {
     type: 'week',
-    eventList: true,
+    eventDisplay: 'fill',
     startDay: 1,
     endDay: 5
   }

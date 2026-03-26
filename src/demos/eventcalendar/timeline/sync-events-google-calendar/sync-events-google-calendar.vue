@@ -49,7 +49,7 @@ const buttonRef = ref(null)
 const myView = {
   timeline: {
     type: 'week',
-    eventList: true
+    eventDisplay: 'fill'
   }
 }
 

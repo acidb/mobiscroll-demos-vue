@@ -11,7 +11,7 @@ const myEvents = ref([])
 
 const myView = {
   calendar: { type: 'week' },
-  schedule: { type: 'day' }
+  scheduler: { type: 'day' }
 }
 
 onMounted(() => {

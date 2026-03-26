@@ -73,7 +73,7 @@ onMounted(() => {
 
 <template>
   <MbscEventcalendar :view="myView" :data="myEvents">
-    <template #eventContent="data">
+    <template #popoverEventContent="data">
       <div>{{ data.title }}</div>
       <div class="md-custom-event-cont">
         <img class="md-custom-event-img" :src="getParticipant(data.original.participant).img" />

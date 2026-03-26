@@ -17,6 +17,7 @@ import {
   updateRecurringEvent /* localeImport */
 } from '@mobiscroll/vue'
 import { onMounted, ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -69,8 +70,8 @@ const calendarSelectedDate = ref(new Date())
 const myEvents = ref([
   {
     id: 1,
-    start: 'dyndatetime(y,m,21)',
-    end: 'dyndatetime(y,m,24)',
+    start: dyndatetime('y,m,21'),
+    end: dyndatetime('y,m,24'),
     title: 'Alice OFF',
     allDay: true,
     color: '#67ab0d'

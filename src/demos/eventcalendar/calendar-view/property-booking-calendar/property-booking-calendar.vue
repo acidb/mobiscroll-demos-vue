@@ -1,6 +1,7 @@
 <script setup>
 import { MbscEventcalendar, MbscToast, setOptions /* localeImport */ } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -13,99 +14,99 @@ const makeMyTrip = 'https://img.mobiscroll.com/demos/make-my-trip-icon.png'
 
 const myEvents = [
   {
-    start: 'dyndatetime(y,m,d-18,12)',
-    end: 'dyndatetime(y,m,d-15,12)',
+    start: dyndatetime('y,m,d-18,12'),
+    end: dyndatetime('y,m,d-15,12'),
     icon: airBnB,
     title: 'Mary Smith',
     color: '#fffa61'
   },
   {
-    start: 'dyndatetime(y,m,d-7,12)',
-    end: 'dyndatetime(y,m,d-1,12)',
+    start: dyndatetime('y,m,d-7,12'),
+    end: dyndatetime('y,m,d-1,12'),
     title: 'James Johnson',
     icon: airBnB,
     color: '#fffa61'
   },
   {
-    start: 'dyndatetime(y,m,d-12,12)',
-    end: 'dyndatetime(y,m,d-9,12)',
+    start: dyndatetime('y,m,d-12,12'),
+    end: dyndatetime('y,m,d-9,12'),
     title: 'Patricia Williams',
     icon: airBnB,
     color: '#fffa61'
   },
   {
-    start: 'dyndatetime(y,m,d+3,12)',
-    end: 'dyndatetime(y,m,d+5,12)',
+    start: dyndatetime('y,m,d+3,12'),
+    end: dyndatetime('y,m,d+5,12'),
     title: 'Michael Brown',
     icon: airBnB,
     color: '#fffa61'
   },
   {
-    start: 'dyndatetime(y,m,d+10,12)',
-    end: 'dyndatetime(y,m,d+11,12)',
+    start: dyndatetime('y,m,d+10,12'),
+    end: dyndatetime('y,m,d+11,12'),
     title: 'Jennifer Jones',
     icon: booking,
     color: '#ff9999'
   },
   {
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d+3,12)',
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d+3,12'),
     title: 'Robert Garcia',
     icon: booking,
     color: '#ff9999'
   },
   {
-    start: 'dyndatetime(y,m,d+19,12)',
-    end: 'dyndatetime(y,m,d+20,12)',
+    start: dyndatetime('y,m,d+19,12'),
+    end: dyndatetime('y,m,d+20,12'),
     title: 'Linda Miller',
     icon: booking,
     color: '#ff9999'
   },
   {
-    start: 'dyndatetime(y,m,d+26,12)',
-    end: 'dyndatetime(y,m,d+27,12)',
+    start: dyndatetime('y,m,d+26,12'),
+    end: dyndatetime('y,m,d+27,12'),
     title: 'John Davis',
     icon: booking,
     color: '#ff9999'
   },
   {
-    start: 'dyndatetime(y,m,d-15,12)',
-    end: 'dyndatetime(y,m,d-13,12)',
+    start: dyndatetime('y,m,d-15,12'),
+    end: dyndatetime('y,m,d-13,12'),
     title: 'Elizabeth Rodriguez',
     icon: makeMyTrip,
     color: '#a0efaa'
   },
   {
-    start: 'dyndatetime(y,m,d+13,12)',
-    end: 'dyndatetime(y,m,d+15,12)',
+    start: dyndatetime('y,m,d+13,12'),
+    end: dyndatetime('y,m,d+15,12'),
     title: 'David Martinez',
     icon: makeMyTrip,
     color: '#a0efaa'
   },
   {
-    start: 'dyndatetime(y,m,d+16,12)',
-    end: 'dyndatetime(y,m,d+18,12)',
+    start: dyndatetime('y,m,d+16,12'),
+    end: dyndatetime('y,m,d+18,12'),
     title: 'Barbara Wilson',
     icon: makeMyTrip,
     color: '#a0efaa'
   },
   {
-    start: 'dyndatetime(y,m,d-9,12)',
-    end: 'dyndatetime(y,m,d-8,12)',
+    start: dyndatetime('y,m,d-9,12'),
+    end: dyndatetime('y,m,d-8,12'),
     title: 'William Anderson',
     icon: makeMyTrip,
     color: '#a0efaa'
   },
   {
-    start: 'dyndatetime(y,m,d+23,12)',
-    end: 'dyndatetime(y,m,d+26,12)',
+    start: dyndatetime('y,m,d+23,12'),
+    end: dyndatetime('y,m,d+26,12'),
     title: 'Susan Taylor',
     icon: makeMyTrip,
     color: '#a0efaa'
   },
   {
-    start: 'dyndatetime(y,m,d+6,12)',
-    end: 'dyndatetime(y,m,d+9,12)',
+    start: dyndatetime('y,m,d+6,12'),
+    end: dyndatetime('y,m,d+9,12'),
     title: 'Richard Jackson',
     icon: airBnB,
     color: '#fffa61'
@@ -151,7 +152,7 @@ function customDefaultEvent(args) {
     @event-create-failed="isToastOpen = true"
     @event-update-failed="isToastOpen = true"
   >
-    <template #labelContent="event">
+    <template #calendarEventContent="event">
       <div class="mbsc-flex mds-booking-item mbsc-align-items-center">
         <img
           v-if="event.original.icon"

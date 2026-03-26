@@ -24,7 +24,7 @@ const selectedResources = ref([1])
 const isToastOpen = ref(false)
 const toastMessage = ref('')
 
-const myView = { schedule: { type: 'week' } }
+const myView = { scheduler: { type: 'week' } }
 
 const myResources = [
   {

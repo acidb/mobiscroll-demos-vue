@@ -17,7 +17,7 @@ const toastMessage = ref('')
 const isToastOpen = ref(false)
 
 const myView = {
-  schedule: {
+  scheduler: {
     type: 'week',
     startDay: 1,
     endDay: 5,

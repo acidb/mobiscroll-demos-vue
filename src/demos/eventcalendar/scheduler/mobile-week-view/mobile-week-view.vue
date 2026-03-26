@@ -17,7 +17,7 @@ const toastMessage = ref('')
 const isToastOpen = ref(false)
 
 const myView = {
-  schedule: { type: 'week' }
+  scheduler: { type: 'week' }
 }
 
 function handleEventClick(args) {

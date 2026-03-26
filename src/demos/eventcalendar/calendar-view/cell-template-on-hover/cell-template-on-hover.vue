@@ -6,6 +6,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -14,45 +15,45 @@ setOptions({
 
 const myEvents = ref([
   {
-    start: 'dyndatetime(y,m,2,12)',
-    end: 'dyndatetime(y,m,2,16)',
+    start: dyndatetime('y,m,2,12'),
+    end: dyndatetime('y,m,2,16'),
     title: 'Company Strategy Offsite',
     color: '#90bcff'
   },
   {
-    start: 'dyndatetime(y,m,7,9)',
-    end: 'dyndatetime(y,m,7,17)',
+    start: dyndatetime('y,m,7,9'),
+    end: dyndatetime('y,m,7,17'),
     title: 'R&D Innovation Workshop',
     color: '#ffdfaf'
   },
   {
-    start: 'dyndatetime(y,m,15,10)',
-    end: 'dyndatetime(y,m,15,15)',
+    start: dyndatetime('y,m,15,10'),
+    end: dyndatetime('y,m,15,15'),
     title: 'Client Feedback Review',
     color: '#ffb9ad'
   },
   {
-    start: 'dyndatetime(y,m,19,9)',
-    end: 'dyndatetime(y,m,19,19)',
+    start: dyndatetime('y,m,19,9'),
+    end: dyndatetime('y,m,19,19'),
     title: 'Team Building Adventure',
     color: '#f3c1ff'
   },
   {
-    start: 'dyndatetime(y,m,23,11)',
-    end: 'dyndatetime(y,m,23,15)',
+    start: dyndatetime('y,m,23,11'),
+    end: dyndatetime('y,m,23,15'),
     title: 'Sales Summit & Training',
     color: '#b5eff8'
   },
   {
-    start: 'dyndatetime(y,m,25,10)',
-    end: 'dyndatetime(y,m,25,15)',
+    start: dyndatetime('y,m,25,10'),
+    end: dyndatetime('y,m,25,15'),
 
     title: 'Executive Planning Retreat',
     color: '#c7ffbb'
   },
   {
-    start: 'dyndatetime(y,m,29,14)',
-    end: 'dyndatetime(y,m,29,17)',
+    start: dyndatetime('y,m,29,14'),
+    end: dyndatetime('y,m,29,17'),
     title: 'Marketing Team Conference',
     color: '#ffeeb6'
   }

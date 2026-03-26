@@ -17,7 +17,7 @@ const toastMessage = ref('')
 const isToastOpen = ref(false)
 
 const myView = {
-  schedule: { type: 'day' }
+  scheduler: { type: 'day' }
 }
 
 function handlePageLoading(args) {

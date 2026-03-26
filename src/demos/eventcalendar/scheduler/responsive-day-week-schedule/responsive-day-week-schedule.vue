@@ -12,7 +12,7 @@ const myEvents = ref([])
 const myResponsive = {
   xsmall: {
     view: {
-      schedule: {
+      scheduler: {
         type: 'day'
       }
     }
@@ -21,7 +21,7 @@ const myResponsive = {
     // Custom breakpoint
     breakpoint: 600,
     view: {
-      schedule: {
+      scheduler: {
         type: 'week'
       }
     }

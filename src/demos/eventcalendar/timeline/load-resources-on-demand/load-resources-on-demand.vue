@@ -6,6 +6,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -17,26 +18,26 @@ const isToastOpen = ref(false)
 
 const myEvents = ref([
   {
-    start: 'dyndatetime(y,m,d,10)',
-    end: 'dyndatetime(y,m,d,13)',
+    start: dyndatetime('y,m,d,10'),
+    end: dyndatetime('y,m,d,13'),
     title: 'Event 14',
     resource: 6
   },
   {
-    start: 'dyndatetime(y,m,d,15)',
-    end: 'dyndatetime(y,m,d,17,30)',
+    start: dyndatetime('y,m,d,15'),
+    end: dyndatetime('y,m,d,17,30'),
     title: 'Event 15',
     resource: 7
   },
   {
-    start: 'dyndatetime(y,m,d,9)',
-    end: 'dyndatetime(y,m,d,11)',
+    start: dyndatetime('y,m,d,9'),
+    end: dyndatetime('y,m,d,11'),
     title: 'Event 16',
     resource: 8
   },
   {
-    start: 'dyndatetime(y,m,d,17)',
-    end: 'dyndatetime(y,m,d,20)',
+    start: dyndatetime('y,m,d,17'),
+    end: dyndatetime('y,m,d,20'),
     title: 'Event 17',
     resource: 9
   }

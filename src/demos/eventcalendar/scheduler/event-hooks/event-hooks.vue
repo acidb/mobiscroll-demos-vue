@@ -19,7 +19,7 @@ const myResources = [
   { id: 3, name: 'John', color: '#e8d0ef' }
 ]
 const myView = {
-  schedule: {
+  scheduler: {
     type: 'day'
   }
 }

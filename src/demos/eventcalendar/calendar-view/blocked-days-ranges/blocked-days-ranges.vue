@@ -6,6 +6,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { onMounted, ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -27,13 +28,13 @@ const myInvalid = [
   },
   {
     allDay: true,
-    start: 'dyndatetime(y,m,19)',
-    end: 'dyndatetime(y,m,20)'
+    start: dyndatetime('y,m,19'),
+    end: dyndatetime('y,m,20')
   },
   {
     allDay: true,
-    start: 'dyndatetime(y,m,26)',
-    end: 'dyndatetime(y,m,27)'
+    start: dyndatetime('y,m,26'),
+    end: dyndatetime('y,m,27')
   }
 ]
 

@@ -15,7 +15,7 @@ setOptions({
 const myEvents = ref([])
 const mySelectedDate = ref(new Date())
 const dayView = {
-  schedule: { type: 'day' }
+  scheduler: { type: 'day' }
 }
 
 function handleSelectedDateChange(args) {

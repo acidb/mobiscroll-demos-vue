@@ -41,7 +41,7 @@ const isConfirmOpen = ref(false)
 const confirmCallback = ref(null)
 
 const myView = {
-  schedule: { type: 'week' }
+  scheduler: { type: 'week' }
 }
 
 function myDefaultEvent() {

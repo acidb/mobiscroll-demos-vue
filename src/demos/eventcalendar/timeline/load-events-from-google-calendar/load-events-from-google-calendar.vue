@@ -56,7 +56,7 @@ const isToastOpen = ref(false)
 const myView = ref({
   timeline: {
     type: 'month',
-    eventList: true
+    eventDisplay: 'fill'
   }
 })
 

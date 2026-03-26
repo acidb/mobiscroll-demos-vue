@@ -54,7 +54,7 @@ const myView = ref({
   timeline: {
     type: 'day',
     size: 14,
-    eventList: true
+    eventDisplay: 'fill'
   }
 })
 
@@ -125,7 +125,7 @@ function handleClose() {
       timeline: {
         type: 'day',
         size: getNrDays(startDate.value, endDate.value),
-        eventList: true
+        eventDisplay: 'fill'
       }
     }
   }

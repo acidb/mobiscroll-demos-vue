@@ -8,6 +8,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -16,50 +17,50 @@ setOptions({
 
 const myEvents = ref([
   {
-    start: 'dyndatetime(y,m,d-3,10)',
-    end: 'dyndatetime(y,m,d-3,15)',
+    start: dyndatetime('y,m,d-3,10'),
+    end: dyndatetime('y,m,d-3,15'),
     title: 'Impact Training',
     resource: [2, 3],
     color: '#35bb5a'
   },
   {
-    start: 'dyndatetime(y,m,d-2,10)',
-    end: 'dyndatetime(y,m,d-2,15)',
+    start: dyndatetime('y,m,d-2,10'),
+    end: dyndatetime('y,m,d-2,15'),
     title: 'Impact Training',
     resource: [2, 3],
     color: '#35bb5a'
   },
   {
-    start: 'dyndatetime(y,m,d,8,30)',
-    end: 'dyndatetime(y,m,d,10)',
+    start: dyndatetime('y,m,d,8,30'),
+    end: dyndatetime('y,m,d,10'),
     title: 'Quick mtg. with Martin',
     resource: 3,
     color: '#913aa7'
   },
   {
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d,13)',
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d,13'),
     title: 'General orientation',
     resource: [1, 2, 3],
     color: '#a71111'
   },
   {
-    start: 'dyndatetime(y,m,d+1,10)',
-    end: 'dyndatetime(y,m,d+1,11)',
+    start: dyndatetime('y,m,d+1,10'),
+    end: dyndatetime('y,m,d+1,11'),
     title: 'Product team mtg.',
     resource: [2, 3],
     color: '#6e7f29'
   },
   {
-    start: 'dyndatetime(y,m,d+2,14)',
-    end: 'dyndatetime(y,m,d+2,16)',
+    start: dyndatetime('y,m,d+2,14'),
+    end: dyndatetime('y,m,d+2,16'),
     title: 'Stakeholder mtg.',
     resource: 1,
     color: '#dcd234'
   },
   {
-    start: 'dyndatetime(y,m,d+3,10)',
-    end: 'dyndatetime(y,m,d+3,14)',
+    start: dyndatetime('y,m,d+3,10'),
+    end: dyndatetime('y,m,d+3,14'),
     title: 'Innovation mtg.',
     resource: [1, 2],
     color: '#de3d83'
@@ -85,7 +86,7 @@ const myResources = [
 ]
 
 const myView = {
-  schedule: {
+  scheduler: {
     type: 'week',
     allDay: false,
     startDay: 1,

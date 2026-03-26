@@ -12,7 +12,7 @@ const myEvents = ref([])
 const myView = {
   timeline: {
     type: 'year',
-    eventList: true
+    eventDisplay: 'fill'
   }
 }
 

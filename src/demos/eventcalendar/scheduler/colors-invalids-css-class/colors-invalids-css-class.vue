@@ -80,7 +80,7 @@ const myColors = [
 ]
 
 const myView = {
-  schedule: {
+  scheduler: {
     allDay: false,
     type: 'week',
     startDay: 1,

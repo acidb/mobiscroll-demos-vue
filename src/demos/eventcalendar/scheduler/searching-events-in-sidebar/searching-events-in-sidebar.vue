@@ -22,7 +22,7 @@ const displayResults = ref(false)
 const calInst = ref(null)
 const timer = ref(null)
 
-const calView = { schedule: { type: 'week' } }
+const calView = { scheduler: { type: 'week' } }
 const listView = { agenda: { type: 'year', size: 5 } }
 
 function handleInputChange(ev) {

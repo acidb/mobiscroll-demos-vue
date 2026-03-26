@@ -22,7 +22,7 @@ const displayResults = ref(false)
 const calInst = ref(null)
 const timer = ref(null)
 
-const calView = { timeline: { type: 'month', eventList: true } }
+const calView = { timeline: { type: 'month', eventDisplay: 'fill' } }
 const listView = { agenda: { type: 'year', size: 5 } }
 
 const myResources = [

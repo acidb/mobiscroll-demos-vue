@@ -100,7 +100,7 @@ const myEvents = ref([
   }
 ])
 const myView = {
-  schedule: { type: 'week' }
+  scheduler: { type: 'week' }
 }
 const repeatData = ref([
   {

@@ -16,7 +16,7 @@ setOptions({
 const myEvents = ref([])
 
 const myView = ref({
-  schedule: {
+  scheduler: {
     type: 'week',
     allDay: false,
     startDay: 1,

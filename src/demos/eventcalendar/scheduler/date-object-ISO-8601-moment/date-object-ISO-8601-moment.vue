@@ -45,7 +45,7 @@ const dateMomentEvents = ref([
 ])
 
 const myView = {
-  schedule: {
+  scheduler: {
     type: 'week'
   }
 }

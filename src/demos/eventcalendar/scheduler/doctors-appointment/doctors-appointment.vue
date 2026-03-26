@@ -7,6 +7,7 @@ import {
   setOptions /* localeImport */
 } from '@mobiscroll/vue'
 import { onMounted, ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -48,8 +49,8 @@ const doctors = ref([
 const myEvents = ref([
   {
     id: 'job1',
-    start: 'dyndatetime(y,m,d,14)',
-    end: 'dyndatetime(y,m,d,16)',
+    start: dyndatetime('y,m,d,14'),
+    end: dyndatetime('y,m,d,16'),
     resource: 1,
     title: 'Myla Bennett',
     job: 'Wisdom tooth removal',
@@ -57,8 +58,8 @@ const myEvents = ref([
   },
   {
     id: 'job2',
-    start: 'dyndatetime(y,m,d,17)',
-    end: 'dyndatetime(y,m,d,18,30)',
+    start: dyndatetime('y,m,d,17'),
+    end: dyndatetime('y,m,d,18,30'),
     resource: 1,
     title: 'Beatrix Foley',
     job: 'Braces',
@@ -66,8 +67,8 @@ const myEvents = ref([
   },
   {
     id: 'job3',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,9,30)',
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,9,30'),
     resource: 3,
     title: 'Frank Watson',
     job: 'Teeth whitening',
@@ -75,8 +76,8 @@ const myEvents = ref([
   },
   {
     id: 'job4',
-    start: 'dyndatetime(y,m,d,10)',
-    end: 'dyndatetime(y,m,d,12,30)',
+    start: dyndatetime('y,m,d,10'),
+    end: dyndatetime('y,m,d,12,30'),
     resource: 3,
     title: 'Jaime Joyce',
     job: 'Root canal treatment',
@@ -84,8 +85,8 @@ const myEvents = ref([
   },
   {
     id: 'job5',
-    start: 'dyndatetime(y,m,d,13)',
-    end: 'dyndatetime(y,m,d,14)',
+    start: dyndatetime('y,m,d,13'),
+    end: dyndatetime('y,m,d,14'),
     resource: 3,
     title: 'Corey Shepard',
     job: 'Tooth extraction',
@@ -93,8 +94,8 @@ const myEvents = ref([
   },
   {
     id: 'job6',
-    start: 'dyndatetime(y,m,d,14)',
-    end: 'dyndatetime(y,m,d,16)',
+    start: dyndatetime('y,m,d,14'),
+    end: dyndatetime('y,m,d,16'),
     resource: 4,
     title: 'Callie Leonard',
     job: 'Crown and bridge',
@@ -102,8 +103,8 @@ const myEvents = ref([
   },
   {
     id: 'job7',
-    start: 'dyndatetime(y,m,d,17)',
-    end: 'dyndatetime(y,m,d,18)',
+    start: dyndatetime('y,m,d,17'),
+    end: dyndatetime('y,m,d,18'),
     resource: 4,
     title: 'Harley Thomson',
     job: 'Tartar removal',
@@ -111,8 +112,8 @@ const myEvents = ref([
   },
   {
     id: 'job8',
-    start: 'dyndatetime(y,m,d,9)',
-    end: 'dyndatetime(y,m,d,11)',
+    start: dyndatetime('y,m,d,9'),
+    end: dyndatetime('y,m,d,11'),
     resource: 6,
     title: 'Ricky Welch',
     job: 'Wisdom tooth removal',
@@ -126,8 +127,8 @@ const myAppointments = ref([
     title: 'Winfred Lesley',
     job: 'Teeth whitening',
     color: '#d1891f',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,9,30)',
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,9,30'),
     unscheduled: true
   },
   {
@@ -135,8 +136,8 @@ const myAppointments = ref([
     title: 'Rosalin Delice',
     job: 'Crown and bridge',
     color: '#1ca11a',
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,10)',
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,10'),
     unscheduled: true
   },
   {
@@ -144,8 +145,8 @@ const myAppointments = ref([
     title: 'Macy Steven',
     job: 'Root canal treatment',
     color: '#cb3939',
-    start: 'dyndatetime(y,m,d,10)',
-    end: 'dyndatetime(y,m,d,12,30)',
+    start: dyndatetime('y,m,d,10'),
+    end: dyndatetime('y,m,d,12,30'),
     unscheduled: true
   },
   {
@@ -153,8 +154,8 @@ const myAppointments = ref([
     title: 'Lavern Cameron',
     job: 'Tartar removal',
     color: '#a446b5',
-    start: 'dyndatetime(y,m,d,12)',
-    end: 'dyndatetime(y,m,d,13)',
+    start: dyndatetime('y,m,d,12'),
+    end: dyndatetime('y,m,d,13'),
     unscheduled: true
   }
 ])
@@ -180,7 +181,7 @@ const toastMessage = ref('')
 const isToastOpen = ref(false)
 
 const myView = {
-  schedule: {
+  scheduler: {
     type: 'day',
     startTime: '08:00',
     endTime: '20:00',

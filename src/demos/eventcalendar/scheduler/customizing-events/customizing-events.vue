@@ -18,14 +18,14 @@ const myEvents = ref([])
 const myResponsive = ref({
   xsmall: {
     view: {
-      schedule: {
+      scheduler: {
         type: 'day'
       }
     }
   },
   medium: {
     view: {
-      schedule: {
+      scheduler: {
         type: 'week'
       }
     }
@@ -145,7 +145,7 @@ onMounted(() => {
     :responsive="myResponsive"
     className="md-custom-event"
   >
-    <template #scheduleEvent="data">
+    <template #schedulerEvent="data">
       <div
         v-if="data.allDay"
         :style="{ background: getCategory(data.original.category).color }"

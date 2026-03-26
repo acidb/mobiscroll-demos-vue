@@ -1,6 +1,7 @@
 <script setup>
 import { MbscEventcalendar, setOptions /* localeImport */ } from '@mobiscroll/vue'
 import { ref } from 'vue'
+import { dyndatetime } from '../../../../dyndatetime'
 
 setOptions({
   // locale,
@@ -11,8 +12,8 @@ const myEvents = ref([
   {
     bufferBefore: 30,
     bufferAfter: 35,
-    start: 'dyndatetime(y,m,d,10,30)',
-    end: 'dyndatetime(y,m,d,13)',
+    start: dyndatetime('y,m,d,10,30'),
+    end: dyndatetime('y,m,d,13'),
     title: 'Tire change',
     color: '#7a5886',
     taskType: 'material-repeat',
@@ -21,8 +22,8 @@ const myEvents = ref([
   {
     bufferAfter: 40,
     bufferBefore: 30,
-    start: 'dyndatetime(y,m,d,7)',
-    end: 'dyndatetime(y,m,d,10)',
+    start: dyndatetime('y,m,d,7'),
+    end: dyndatetime('y,m,d,10'),
     title: 'Brake maintenance',
     color: '#9da721',
     taskType: 'cogs',
@@ -31,8 +32,8 @@ const myEvents = ref([
   {
     bufferAfter: 45,
     bufferBefore: 30,
-    start: 'dyndatetime(y,m,d,13,30)',
-    end: 'dyndatetime(y,m,d,16,30)',
+    start: dyndatetime('y,m,d,13,30'),
+    end: dyndatetime('y,m,d,16,30'),
     title: 'Fluid maintenance',
     color: '#cd6957',
     taskType: 'cogs',
@@ -41,8 +42,8 @@ const myEvents = ref([
   {
     bufferAfter: 35,
     bufferBefore: 30,
-    start: 'dyndatetime(y,m,d,11)',
-    end: 'dyndatetime(y,m,d,14)',
+    start: dyndatetime('y,m,d,11'),
+    end: dyndatetime('y,m,d,14'),
     title: 'Oil change',
     color: '#637e57',
     taskType: 'material-repeat',
@@ -51,8 +52,8 @@ const myEvents = ref([
   {
     bufferAfter: 60,
     bufferBefore: 30,
-    start: 'dyndatetime(y,m,d,8)',
-    end: 'dyndatetime(y,m,d,12)',
+    start: dyndatetime('y,m,d,8'),
+    end: dyndatetime('y,m,d,12'),
     title: 'Engine repair',
     color: '#6c5d45',
     taskType: 'material-search',
@@ -61,8 +62,8 @@ const myEvents = ref([
   {
     bufferAfter: 45,
     bufferBefore: 30,
-    start: 'dyndatetime(y,m,d,14)',
-    end: 'dyndatetime(y,m,d,19)',
+    start: dyndatetime('y,m,d,14'),
+    end: dyndatetime('y,m,d,19'),
     title: 'Car painting',
     color: '#50789d',
     taskType: 'material-format-paint',
@@ -111,7 +112,7 @@ const myView = {
     :extendDefaultEvent="myDefaultEvent"
     className="md-timeline-template"
   >
-    <template #scheduleEvent="data">
+    <template #timelineEvent="data">
       <div
         class="md-timeline-template-event"
         :style="{ borderColor: data.color, background: data.color }"

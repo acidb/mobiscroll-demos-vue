@@ -24,7 +24,7 @@ function handleToastClose() {
 }
 
 const myView = {
-  schedule: { type: 'day' }
+  scheduler: { type: 'day' }
 }
 
 const myEvents = ref([

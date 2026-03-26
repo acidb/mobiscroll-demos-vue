@@ -18,7 +18,7 @@ const myView = {
   timeline: {
     type: 'week',
     eventHeight: 'variable',
-    eventList: true
+    eventDisplay: 'fill'
   }
 }
 
@@ -120,7 +120,7 @@ onMounted(() => {
       <div class="mds-tasks-resource-name">{{ resource.name }}</div>
       <div class="mds-tasks-resource-description">{{ resource.description }}</div>
     </template>
-    <template #scheduleEventContent="event">
+    <template #timelineEventContent="event">
       <div class="mds-tasks-event-title">{{ event.title }}</div>
       <div class="mds-tasks-event-subtitle">Task list</div>
       <div class="mds-tasks-event-list">

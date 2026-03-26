@@ -17,7 +17,7 @@ setOptions({
 const myEvents = ref([])
 const calendarRef = ref(null)
 const myView = {
-  schedule: {
+  scheduler: {
     type: 'week'
   }
 }
