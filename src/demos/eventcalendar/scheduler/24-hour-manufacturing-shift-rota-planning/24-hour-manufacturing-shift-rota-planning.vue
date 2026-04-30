@@ -8,15 +8,6 @@ setOptions({
   // theme
 })
 
-const colors = ref([])
-const redResources = ref({})
-const draggedEventStart = ref(null)
-const draggedEventEnd = ref(null)
-const draggedEventResource = ref(null)
-const availableSlotOnHover = ref(null)
-const isToastOpen = ref(false)
-const toastMessage = ref('')
-
 const morningColor = '#4a8c4d'
 const afternoonColor = '#f87c6b'
 const nightColor = '#8567AD'
@@ -437,8 +428,6 @@ const resources = [
   { id: 'C', name: 'Crew C' }
 ]
 
-const myEvents = ref(initialEvents)
-
 const view = {
   scheduler: {
     type: 'week',
@@ -449,6 +438,16 @@ const view = {
     timeLabelStep: 120
   }
 }
+
+const colors = ref([])
+const redResources = ref({})
+const draggedEventStart = ref(null)
+const draggedEventEnd = ref(null)
+const draggedEventResource = ref(null)
+const availableSlotOnHover = ref(null)
+const isToastOpen = ref(false)
+const toastMessage = ref('')
+const myEvents = ref(initialEvents)
 
 const getAvailableSlots = (resourceId, dayStart) => {
   const dayEnd = new Date(dayStart)
