@@ -92,7 +92,7 @@ function handleCellHoverOut() {
       <div>{{ resource.name }} Sidebar</div>
     </template>
 
-    <template #day="{ date }">
+    <template #timelineDay="{ date }">
       <div
         :class="[
           'mds-highlight-day-content',

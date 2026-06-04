@@ -364,7 +364,7 @@ function handleSelectedDateChange(args) {
     @selected-date-change="handleSelectedDateChange"
     @cell-click="handleCellClick"
   >
-    <template #day="data">
+    <template #calendarDay="data">
       {{ void (dayData = getDayTemplate(data)) }}
       <div
         class="mds-cell-template-cont"

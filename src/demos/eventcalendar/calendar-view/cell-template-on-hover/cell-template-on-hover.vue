@@ -105,7 +105,7 @@ function isHovered(date) {
     @cell-hover-in="handleCellHoverIn"
     @cell-hover-out="handleCellHoverOut"
   >
-    <template #dayContent="args">
+    <template #calendarDayContent="args">
       <button @click="addEvent" class="mds-cell-summary-btn" v-if="isHovered(args.date)">
         Add event
       </button>
