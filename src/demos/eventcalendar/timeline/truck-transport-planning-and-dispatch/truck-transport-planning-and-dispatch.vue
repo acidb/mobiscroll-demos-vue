@@ -1054,7 +1054,9 @@ function addActualEvents(events) {
         let cAStart = new Date(evStart.getTime() + dOff)
         if (!(cAStart >= evStart && cAStart < evEnd)) cAStart = evStart
         const drop0 =
-          event.drop[0] instanceof Date ? event.drop[0].getTime() : new Date(event.drop[0]).getTime()
+          event.drop[0] instanceof Date
+            ? event.drop[0].getTime()
+            : new Date(event.drop[0]).getTime()
         let cAEnd = new Date(drop0 + aOff)
         const minEnd = new Date(cAStart.getTime() + 30 * 60000)
         if (cAEnd < minEnd) cAEnd = minEnd
@@ -1079,7 +1081,9 @@ function addActualEvents(events) {
       } else if (event.actualRef && event.actualRef.title !== 'Completed') {
         const aOff = possibleOffsets[Math.floor(Math.random() * possibleOffsets.length)] * 60000
         const drop0 =
-          event.drop[0] instanceof Date ? event.drop[0].getTime() : new Date(event.drop[0]).getTime()
+          event.drop[0] instanceof Date
+            ? event.drop[0].getTime()
+            : new Date(event.drop[0]).getTime()
         let cAEnd = new Date(drop0 + aOff)
         const minEnd = new Date(event.actualRef.start.getTime() + 30 * 60000)
         if (cAEnd < minEnd) cAEnd = minEnd
@@ -1546,13 +1550,31 @@ onUnmounted(() => {
           <span class="mds-dispatch-range-label">{{ rangeLabel }}</span>
         </MbscButton>
         <div class="mds-dispatch-header-right mbsc-flex">
-          <MbscSegmentedGroup cssClass="mds-dispatch-status-filter" select="multiple" v-model="statusFilters">
-            <MbscSegmented value="scheduled"><span class="mds-dispatch-seg-dot mds-dispatch-seg-dot-scheduled"></span>Scheduled</MbscSegmented>
-            <MbscSegmented value="in progress"><span class="mds-dispatch-seg-dot mds-dispatch-seg-dot-inprogress"></span>In progress</MbscSegmented>
-            <MbscSegmented value="completed"><span class="mds-dispatch-seg-dot mds-dispatch-seg-dot-completed"></span>Completed</MbscSegmented>
+          <MbscSegmentedGroup
+            cssClass="mds-dispatch-status-filter"
+            select="multiple"
+            v-model="statusFilters"
+          >
+            <MbscSegmented value="scheduled"
+              ><span class="mds-dispatch-seg-dot mds-dispatch-seg-dot-scheduled"></span
+              >Scheduled</MbscSegmented
+            >
+            <MbscSegmented value="in progress"
+              ><span class="mds-dispatch-seg-dot mds-dispatch-seg-dot-inprogress"></span>In
+              progress</MbscSegmented
+            >
+            <MbscSegmented value="completed"
+              ><span class="mds-dispatch-seg-dot mds-dispatch-seg-dot-completed"></span
+              >Completed</MbscSegmented
+            >
           </MbscSegmentedGroup>
           <div class="mds-dispatch-zoom mbsc-flex">
-            <MbscButton icon="minus" variant="flat" :disabled="zoomLevel === 1" @click="handleZoom(zoomLevel - 1)" />
+            <MbscButton
+              icon="minus"
+              variant="flat"
+              :disabled="zoomLevel === 1"
+              @click="handleZoom(zoomLevel - 1)"
+            />
             <input
               type="range"
               min="1"
@@ -1561,9 +1583,20 @@ onUnmounted(() => {
               class="mds-dispatch-zoom-slider"
               @input="(e) => handleZoom(+e.target.value)"
             />
-            <MbscButton icon="plus" variant="flat" :disabled="zoomLevel === 5" @click="handleZoom(zoomLevel + 1)" />
+            <MbscButton
+              icon="plus"
+              variant="flat"
+              :disabled="zoomLevel === 5"
+              @click="handleZoom(zoomLevel + 1)"
+            />
           </div>
-          <MbscButton variant="outline" startIcon="clock" cssClass="mds-dispatch-now-btn" @click="goLive()">Now</MbscButton>
+          <MbscButton
+            variant="outline"
+            startIcon="clock"
+            cssClass="mds-dispatch-now-btn"
+            @click="goLive()"
+            >Now</MbscButton
+          >
         </div>
       </div>
       <div class="mbsc-grid mbsc-no-padding mds-dispatch-content">
@@ -1644,7 +1677,13 @@ onUnmounted(() => {
                     v-model="searchQuery"
                     @change="onSearchChange()"
                   />
-                  <MbscButton startIcon="material-filter-list" variant="outline" cssClass="mbsc-flex-none" @click="openFilterPopup">Filter</MbscButton>
+                  <MbscButton
+                    startIcon="material-filter-list"
+                    variant="outline"
+                    cssClass="mbsc-flex-none"
+                    @click="openFilterPopup"
+                    >Filter</MbscButton
+                  >
                 </div>
               </template>
               <template #resource="resource">
@@ -1727,7 +1766,10 @@ onUnmounted(() => {
       </div>
       <div class="mbsc-form-group">
         <div class="mbsc-form-group-title">Operational Status</div>
-        <MbscCheckbox v-model="tempFilters['maintenance']" label="In maintenance/Maintenance planned" />
+        <MbscCheckbox
+          v-model="tempFilters['maintenance']"
+          label="In maintenance/Maintenance planned"
+        />
         <MbscCheckbox v-model="tempFilters['operational']" label="Operational" />
       </div>
     </MbscPopup>

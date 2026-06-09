@@ -448,7 +448,10 @@ function handleEmployeePointerDown() {
               class="mds-drop-on-events-employee-item mbsc-flex"
               @pointerdown="handleEmployeePointerDown"
             >
-              <div class="mds-drop-on-events-employee-avatar mbsc-flex" :style="{ background: emp.color }">
+              <div
+                class="mds-drop-on-events-employee-avatar mbsc-flex"
+                :style="{ background: emp.color }"
+              >
                 {{ emp.avatar }}
               </div>
               <div class="mds-drop-on-events-employee-info mbsc-flex">
@@ -501,7 +504,9 @@ function handleEmployeePointerDown() {
                 >
                   <div class="mds-drop-on-events-event-header mbsc-flex">
                     <div class="mds-drop-on-events-event-title">{{ data.title }}</div>
-                    <div class="mds-drop-on-events-event-time">{{ data.start }} - {{ data.end }}</div>
+                    <div class="mds-drop-on-events-event-time">
+                      {{ data.start }} - {{ data.end }}
+                    </div>
                   </div>
                   <div
                     v-if="data.original.attendees && data.original.attendees.length > 0"
