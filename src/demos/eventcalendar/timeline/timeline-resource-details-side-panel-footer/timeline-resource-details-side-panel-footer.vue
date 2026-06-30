@@ -14,23 +14,23 @@ setOptions({
 
 const calRef = ref(null)
 const myEvents = ref()
-const loadedEvents = ref()
+const loadedEvents = ref([])
 const sortColumn = ref('')
 const sortDirection = ref('')
-const sortDay = ref(null)
+const sortDay = ref()
 const totalRevenue = ref(0)
 
 const myResources = ref([
-  { id: 1, name: 'Horizon', seats: 1200, color: '#4a4a4a', price: 1000 },
-  { id: 2, name: 'Apex Hall', seats: 90, color: '#fdf500', price: 600 },
-  { id: 3, name: 'Jade Room', seats: 700, color: '#00aaff', price: 900 },
-  { id: 4, name: 'Dome Arena', seats: 850, color: '#239a21', price: 750 },
-  { id: 5, name: 'Forum Plaza', seats: 900, color: '#8f1ed6', price: 700 },
-  { id: 6, name: 'Gallery', seats: 300, color: '#0077b6', price: 650 },
-  { id: 7, name: 'Icon Hall', seats: 450, color: '#e63946', price: 850 },
-  { id: 8, name: 'Broadway', seats: 250, color: '#ff0101', price: 800 },
-  { id: 9, name: 'Central Hub', seats: 400, color: '#01adff', price: 1100 },
-  { id: 10, name: 'Empire Hall', seats: 550, color: '#ff4600', price: 950 }
+  { id: 1, name: 'Horizon', seats: 1200, color: '#4a4a4a', price: 1000, revenue: 0 },
+  { id: 2, name: 'Apex Hall', seats: 90, color: '#fdf500', price: 600, revenue: 0 },
+  { id: 3, name: 'Jade Room', seats: 700, color: '#00aaff', price: 900, revenue: 0 },
+  { id: 4, name: 'Dome Arena', seats: 850, color: '#239a21', price: 750, revenue: 0 },
+  { id: 5, name: 'Forum Plaza', seats: 900, color: '#8f1ed6', price: 700, revenue: 0 },
+  { id: 6, name: 'Gallery', seats: 300, color: '#0077b6', price: 650, revenue: 0 },
+  { id: 7, name: 'Icon Hall', seats: 450, color: '#e63946', price: 850, revenue: 0 },
+  { id: 8, name: 'Broadway', seats: 250, color: '#ff0101', price: 800, revenue: 0 },
+  { id: 9, name: 'Central Hub', seats: 400, color: '#01adff', price: 1100, revenue: 0 },
+  { id: 10, name: 'Empire Hall', seats: 550, color: '#ff4600', price: 950, revenue: 0 }
 ])
 
 const myView = {
@@ -57,8 +57,7 @@ function getRevenue(resource) {
   return days * resource.price
 }
 
-function getOccuppancy(data) {
-  const events = data.events
+function getOccuppancy(events) {
   let occuppancy = 0
   if (events) {
     const resourceIds = []
@@ -74,7 +73,7 @@ function getOccuppancy(data) {
   return occuppancy.toFixed(0)
 }
 
-function getSortArrow(column, day = null) {
+function getSortArrow(column, day = undefined) {
   if (sortColumn.value === column && day === sortDay.value) {
     return sortDirection.value === 'asc' ? 'asc' : sortDirection.value === 'desc' ? 'desc' : 'def'
   }
@@ -98,7 +97,7 @@ function getBusyHours(resource, timestamp) {
   }, 0)
 }
 
-function sortResources(column, day = null) {
+function sortResources(column, day) {
   if (column) {
     if (sortColumn.value === column && day === sortDay.value) {
       sortDirection.value =
@@ -119,13 +118,14 @@ function sortResources(column, day = null) {
 
   myResources.value = [
     ...myResources.value.sort((a, b) => {
+      const col = sortColumn.value
       if (sortDirection.value === 'asc') {
-        return a[sortColumn.value] > b[sortColumn.value] ? 1 : -1
+        return a[col] > b[col] ? 1 : -1
       }
       if (sortDirection.value === 'desc') {
-        return a[sortColumn.value] < b[sortColumn.value] ? 1 : -1
+        return a[col] < b[col] ? 1 : -1
       }
-      return a.id - b.id
+      return +a.id - +b.id
     })
   ]
 }
@@ -138,7 +138,7 @@ function refreshData() {
       resource.revenue = getRevenue(resource)
     })
 
-    totalRevenue.value = myResources.value.reduce((total, resource) => total + resource.revenue, 0)
+    totalRevenue.value = myResources.value.reduce((total, resource) => total + (resource.revenue || 0), 0)
 
     sortResources()
   })

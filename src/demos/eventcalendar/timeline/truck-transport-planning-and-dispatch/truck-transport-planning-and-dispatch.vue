@@ -9,9 +9,9 @@ import {
   MbscInput,
   MbscPage,
   MbscPopup,
-  MbscSelect,
   MbscSegmented,
   MbscSegmentedGroup,
+  MbscSelect,
   MbscToast,
   setOptions /* localeImport */
 } from '@mobiscroll/vue'

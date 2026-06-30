@@ -207,7 +207,7 @@ function createAddPopup(event, target) {
   isEdit.value = false
   editedEvent.value = event
   addEditPopupAnchor.value = target
-  fillPopup(event)
+  fillPopup({ ...event, allDay: false })
   isAddEditPopupOpen.value = true
 }
 
