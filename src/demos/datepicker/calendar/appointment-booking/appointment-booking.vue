@@ -152,7 +152,6 @@ function getBookings(d, callback) {
           :min="minDate"
           :max="maxDate"
           :stepMinute="60"
-          :width="null"
           :labels="datetimeLabels"
           :invalid="datetimeInvalid"
           @page-loading="handlePageLoadingDatetime"
