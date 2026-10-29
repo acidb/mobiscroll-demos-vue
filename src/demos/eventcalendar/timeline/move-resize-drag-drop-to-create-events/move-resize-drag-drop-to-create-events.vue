@@ -119,6 +119,7 @@ const myView = ref({
     :resource="myResource"
     :view="myView"
     :clickToCreate="true"
+    :selectMultipleEvents="true"
     :dragToCreate="true"
     :dragToMove="true"
     :dragToResize="true"
